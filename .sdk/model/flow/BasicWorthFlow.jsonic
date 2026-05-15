@@ -1,0 +1,28 @@
+# BasicWorthFlow
+
+main: kit: flow: BasicWorthFlow:
+{
+  entity: "worth",
+  kind: "basic",
+  name: "BasicWorthFlow",
+  step: [
+    {
+      input: {
+        ref: "worth_ref01",
+        srcdatavar: "worth_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-worth_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWorthFlow"
+}

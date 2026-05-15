@@ -1,0 +1,26 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 4
+  metrics: count: method: 4
+
+  entity: giveaway: {
+    path: "/filter": {
+      op: list: method: *GET
+    }
+    path: "/giveaway": {
+      op: load: method: *GET
+    }
+    path: "/giveaways": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: worth: {
+    path: "/worth": {
+      op: load: method: *GET
+    }
+  }
+
+}

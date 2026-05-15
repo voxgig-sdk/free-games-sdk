@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "worth": {
+      "WORTH00": {
+        "active_giveaways_number": "s14",
+        "worth_estimation_usd": "s15"
+      },
+      "WORTH01": {
+        "active_giveaways_number": "s28",
+        "worth_estimation_usd": "s29"
+      },
+      "WORTH02": {
+        "active_giveaways_number": "s3c",
+        "worth_estimation_usd": "s3d"
+      }
+    }
+  },
+  "new": {
+    "worth": {
+      "worth_ref01": {
+        "active_giveaways_number": "s50",
+        "worth_estimation_usd": "s51"
+      }
+    }
+  }
+}

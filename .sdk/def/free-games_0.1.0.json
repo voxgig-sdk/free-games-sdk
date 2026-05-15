@@ -1,0 +1,358 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Free Games API",
+    "description": "The GamerPower API provides access to a vast collection of free games, in-game loot, and ongoing giveaways without any restrictions or the need for authentication. Users can retrieve giveaway data through simple HTTP GET requests, making integration easy and seamless for developers and gamers alike.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "GamerPower API Documentation",
+      "url": "https://www.gamerpower.com/api-read"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://www.gamerpower.com/api",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/giveaways": {
+      "get": {
+        "summary": "Get all giveaways",
+        "description": "Retrieve a list of all active giveaways, including free games, in-game loot, and other gaming-related giveaways.",
+        "operationId": "getAllGiveaways",
+        "tags": [
+          "Giveaways"
+        ],
+        "parameters": [
+          {
+            "name": "platform",
+            "in": "query",
+            "description": "Filter giveaways by platform (e.g., pc, steam, epic-games-store, android, ios, ps4, ps5, xbox-one, xbox-series-xs, switch, vr)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Filter giveaways by type (e.g., game, loot, beta)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort-by",
+            "in": "query",
+            "description": "Sort giveaways by criteria (e.g., date, value, popularity)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of giveaways",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Giveaway"
+                  }
+                },
+                "example": [
+                  {
+                    "id": 1234,
+                    "title": "Free Game Giveaway",
+                    "worth": "$19.99",
+                    "thumbnail": "https://www.gamerpower.com/offers/1/example.jpg",
+                    "image": "https://www.gamerpower.com/offers/1/example-large.jpg",
+                    "description": "Get this amazing game for free for a limited time!",
+                    "instructions": "1. Click the button to visit the giveaway page. 2. Follow instructions to claim.",
+                    "open_giveaway_url": "https://www.gamerpower.com/open/1234",
+                    "published_date": "2023-11-15 12:00:00",
+                    "type": "Game",
+                    "platforms": "PC, Steam",
+                    "end_date": "2023-12-15 23:59:00",
+                    "users": 5000,
+                    "status": "Active",
+                    "gamerpower_url": "https://www.gamerpower.com/giveaway/1234",
+                    "open_giveaway": "https://www.example.com/giveaway"
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "No giveaways found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/giveaway": {
+      "get": {
+        "summary": "Get specific giveaway by ID",
+        "description": "Retrieve detailed information about a specific giveaway using its unique identifier.",
+        "operationId": "getGiveawayById",
+        "tags": [
+          "Giveaways"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The unique identifier of the giveaway",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with giveaway details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Giveaway"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Giveaway not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/filter": {
+      "get": {
+        "summary": "Filter giveaways",
+        "description": "Filter giveaways by multiple criteria including platform and type.",
+        "operationId": "filterGiveaways",
+        "tags": [
+          "Giveaways"
+        ],
+        "parameters": [
+          {
+            "name": "platform",
+            "in": "query",
+            "description": "Platform to filter by",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Type of giveaway to filter by",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with filtered giveaways",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Giveaway"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/worth": {
+      "get": {
+        "summary": "Get total worth of live giveaways",
+        "description": "Retrieve the total monetary worth of all currently active giveaways.",
+        "operationId": "getTotalWorth",
+        "tags": [
+          "Statistics"
+        ],
+        "parameters": [
+          {
+            "name": "platform",
+            "in": "query",
+            "description": "Filter total worth by platform",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Filter total worth by type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with total worth information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Worth"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Giveaway": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the giveaway"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the giveaway"
+          },
+          "worth": {
+            "type": "string",
+            "description": "Monetary value of the giveaway"
+          },
+          "thumbnail": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the thumbnail image"
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the full-size image"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the giveaway"
+          },
+          "instructions": {
+            "type": "string",
+            "description": "Instructions on how to claim the giveaway"
+          },
+          "open_giveaway_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to open and claim the giveaway"
+          },
+          "published_date": {
+            "type": "string",
+            "description": "Date and time when the giveaway was published"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of giveaway (e.g., Game, Loot, Beta)"
+          },
+          "platforms": {
+            "type": "string",
+            "description": "Platforms on which the giveaway is available"
+          },
+          "end_date": {
+            "type": "string",
+            "description": "Date and time when the giveaway ends"
+          },
+          "users": {
+            "type": "integer",
+            "description": "Number of users participating in the giveaway"
+          },
+          "status": {
+            "type": "string",
+            "description": "Current status of the giveaway"
+          },
+          "gamerpower_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the giveaway page on GamerPower"
+          },
+          "open_giveaway": {
+            "type": "string",
+            "format": "uri",
+            "description": "Direct URL to claim the giveaway"
+          }
+        }
+      },
+      "Worth": {
+        "type": "object",
+        "properties": {
+          "worth_estimation_usd": {
+            "type": "string",
+            "description": "Total estimated worth in USD"
+          },
+          "active_giveaways_number": {
+            "type": "integer",
+            "description": "Number of active giveaways"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "description": "HTTP status code"
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Giveaways",
+      "description": "Operations related to game giveaways"
+    },
+    {
+      "name": "Statistics",
+      "description": "Statistical information about giveaways"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+# Entity: worth
+
+main: kit: entity: worth: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "active_giveaways_number"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "worth_estimation_usd"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "worth"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "platform"
+                orig: "platform"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "type"
+                orig: "type"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/worth"
+          parts: [
+            "worth"
+          ]
+          select: {
+            exist: [
+              "platform"
+              "type"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

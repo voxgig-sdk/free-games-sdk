@@ -1,0 +1,81 @@
+{
+  "existing": {
+    "giveaway": {
+      "GIVEAWAY00": {
+        "description": "sa0",
+        "end_date": "sa1",
+        "gamerpower_url": "sa2",
+        "id": "GIVEAWAY00",
+        "image": "sa4",
+        "instruction": "sa5",
+        "open_giveaway": "sa6",
+        "open_giveaway_url": "sa7",
+        "platform": "sa8",
+        "published_date": "sa9",
+        "status": "saa",
+        "thumbnail": "sab",
+        "title": "sac",
+        "type": "sad",
+        "user": "sae",
+        "worth": "saf"
+      },
+      "GIVEAWAY01": {
+        "description": "s140",
+        "end_date": "s141",
+        "gamerpower_url": "s142",
+        "id": "GIVEAWAY01",
+        "image": "s144",
+        "instruction": "s145",
+        "open_giveaway": "s146",
+        "open_giveaway_url": "s147",
+        "platform": "s148",
+        "published_date": "s149",
+        "status": "s14a",
+        "thumbnail": "s14b",
+        "title": "s14c",
+        "type": "s14d",
+        "user": "s14e",
+        "worth": "s14f"
+      },
+      "GIVEAWAY02": {
+        "description": "s1e0",
+        "end_date": "s1e1",
+        "gamerpower_url": "s1e2",
+        "id": "GIVEAWAY02",
+        "image": "s1e4",
+        "instruction": "s1e5",
+        "open_giveaway": "s1e6",
+        "open_giveaway_url": "s1e7",
+        "platform": "s1e8",
+        "published_date": "s1e9",
+        "status": "s1ea",
+        "thumbnail": "s1eb",
+        "title": "s1ec",
+        "type": "s1ed",
+        "user": "s1ee",
+        "worth": "s1ef"
+      }
+    }
+  },
+  "new": {
+    "giveaway": {
+      "giveaway_ref01": {
+        "description": "s280",
+        "end_date": "s281",
+        "gamerpower_url": "s282",
+        "image": "s284",
+        "instruction": "s285",
+        "open_giveaway": "s286",
+        "open_giveaway_url": "s287",
+        "platform": "s288",
+        "published_date": "s289",
+        "status": "s28a",
+        "thumbnail": "s28b",
+        "title": "s28c",
+        "type": "s28d",
+        "user": "s28e",
+        "worth": "s28f"
+      }
+    }
+  }
+}
