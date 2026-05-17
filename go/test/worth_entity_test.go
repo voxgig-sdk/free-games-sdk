@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/free-games-sdk"
-	"github.com/voxgig-sdk/free-games-sdk/core"
+	sdk "github.com/voxgig-sdk/free-games-sdk/go"
+	"github.com/voxgig-sdk/free-games-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/free-games-sdk/go/utility/struct"
 )
 
 func TestWorthEntity(t *testing.T) {

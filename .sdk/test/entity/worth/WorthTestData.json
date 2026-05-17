@@ -3,15 +3,18 @@
     "worth": {
       "WORTH00": {
         "active_giveaways_number": "s14",
-        "worth_estimation_usd": "s15"
+        "worth_estimation_usd": "s15",
+        "id": "WORTH00"
       },
       "WORTH01": {
         "active_giveaways_number": "s28",
-        "worth_estimation_usd": "s29"
+        "worth_estimation_usd": "s29",
+        "id": "WORTH01"
       },
       "WORTH02": {
         "active_giveaways_number": "s3c",
-        "worth_estimation_usd": "s3d"
+        "worth_estimation_usd": "s3d",
+        "id": "WORTH02"
       }
     }
   },

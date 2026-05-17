@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/free-games-sdk/core"
+	"github.com/voxgig-sdk/free-games-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/free-games-sdk/go/utility/struct"
 )
 
 type WorthEntity struct {
