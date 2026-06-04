@@ -164,14 +164,12 @@ func giveawayDirectSetup(mockres any) *giveawayDirectSetupResult {
 	env := envOverride(map[string]any{
 		"FREEGAMES_TEST_GIVEAWAY_ENTID": map[string]any{},
 		"FREEGAMES_TEST_LIVE":    "FALSE",
-		"FREEGAMES_APIKEY":       "NONE",
 	})
 
 	live := env["FREEGAMES_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["FREEGAMES_APIKEY"],
 		}
 		client := sdk.NewFreeGamesSDK(mergedOpts)
 
