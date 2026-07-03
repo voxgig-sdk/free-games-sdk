@@ -10,7 +10,7 @@ The Python SDK for the FreeGames API — an entity-oriented client following Pyt
 
 ## Install
 ```bash
-pip install free-games-sdk
+pip install voxgig-sdk-free-games
 ```
 
 Or install from source:

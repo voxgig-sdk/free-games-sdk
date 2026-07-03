@@ -10,7 +10,7 @@ The TypeScript SDK for the FreeGames API — a type-safe, entity-oriented client
 
 ## Install
 ```bash
-npm install free-games
+npm install @voxgig-sdk/free-games
 ```
 ## Tutorial: your first API call
 

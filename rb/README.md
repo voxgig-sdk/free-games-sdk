@@ -10,13 +10,13 @@ The Ruby SDK for the FreeGames API — an entity-oriented client using idiomatic
 
 ## Install
 ```bash
-gem install free-games-sdk
+gem install voxgig-sdk-free-games
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "free-games-sdk"
+gem "voxgig-sdk-free-games"
 ```
 
 Then run:

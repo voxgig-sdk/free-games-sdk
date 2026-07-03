@@ -1,7 +1,23 @@
 {
   "name": "@voxgig-sdk/free-games",
   "version": "0.0.1",
-  "description": "DESCRIPTION",
+  "description": "Unofficial generated TypeScript SDK for the Free Games public API. Not affiliated with or endorsed by the upstream API provider.",
+  "keywords": [
+    "voxgig",
+    "sdk",
+    "generated-sdk",
+    "openapi",
+    "api-client",
+    "free-games"
+  ],
+  "homepage": "https://github.com/voxgig-sdk/free-games-sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voxgig-sdk/free-games-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/voxgig-sdk/free-games-sdk/issues"
+  },
   "main": "dist/FreeGamesSDK.js",
   "type": "commonjs",
   "types": "dist/FreeGamesSDK.d.ts",
@@ -14,7 +30,10 @@
     "clean": "rm -rf node_modules yarn.lock package-lock.json",
     "reset": "npm run clean && npm i && npm run build && npm test"
   },
-  "author": "FreeGames",
+  "author": {
+    "name": "Voxgig",
+    "url": "https://voxgig.com"
+  },
   "license": "MIT",
   "dependencies": {},
   "peerDependencies": {},

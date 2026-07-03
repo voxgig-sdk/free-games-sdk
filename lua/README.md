@@ -10,7 +10,7 @@ The Lua SDK for the FreeGames API — an entity-oriented client using Lua conven
 
 ## Install
 ```bash
-luarocks install free-games-sdk
+luarocks install voxgig-sdk-free-games
 ```
 
 If the module is not yet published, add the source directory to
