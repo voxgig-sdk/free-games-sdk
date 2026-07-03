@@ -62,12 +62,14 @@ function worth_direct_setup(mockres)
   local env = runner.env_override({
     ["FREEGAMES_TEST_WORTH_ENTID"] = {},
     ["FREEGAMES_TEST_LIVE"] = "FALSE",
+    ["FREEGAMES_APIKEY"] = "NONE",
   })
 
   local live = env["FREEGAMES_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["FREEGAMES_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

@@ -113,12 +113,14 @@ function giveaway_direct_setup($mockres)
     $env = Runner::env_override([
         "FREEGAMES_TEST_GIVEAWAY_ENTID" => [],
         "FREEGAMES_TEST_LIVE" => "FALSE",
+        "FREEGAMES_APIKEY" => "NONE",
     ]);
 
     $live = $env["FREEGAMES_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["FREEGAMES_APIKEY"],
         ];
         $client = new FreeGamesSDK($merged_opts);
         return [

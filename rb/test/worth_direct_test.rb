@@ -61,12 +61,14 @@ def worth_direct_setup(mockres)
   env = Runner.env_override({
     "FREEGAMES_TEST_WORTH_ENTID" => {},
     "FREEGAMES_TEST_LIVE" => "FALSE",
+    "FREEGAMES_APIKEY" => "NONE",
   })
 
   live = env["FREEGAMES_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["FREEGAMES_APIKEY"],
     }
     client = FreeGamesSDK.new(merged_opts)
     return {

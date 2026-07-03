@@ -74,12 +74,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'FREEGAMES_TEST_WORTH_ENTID': {},
     'FREEGAMES_TEST_LIVE': 'FALSE',
+    'FREEGAMES_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.FREEGAMES_TEST_LIVE
 
   if (live) {
     const client = new FreeGamesSDK({
+      apikey: env.FREEGAMES_APIKEY,
     })
 
     let idmap: any = env['FREEGAMES_TEST_WORTH_ENTID']

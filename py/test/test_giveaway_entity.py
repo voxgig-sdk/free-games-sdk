@@ -102,6 +102,7 @@ def _giveaway_basic_setup(extra):
         "FREEGAMES_TEST_GIVEAWAY_ENTID": idmap,
         "FREEGAMES_TEST_LIVE": "FALSE",
         "FREEGAMES_TEST_EXPLAIN": "FALSE",
+        "FREEGAMES_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -112,6 +113,7 @@ def _giveaway_basic_setup(extra):
     if env.get("FREEGAMES_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("FREEGAMES_APIKEY"),
             },
             extra or {},
         ])

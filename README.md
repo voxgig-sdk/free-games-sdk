@@ -1,19 +1,8 @@
 # FreeGames SDK
 
-Find current free game giveaways, in-game loot, and beta keys aggregated by GamerPower
+Free Games API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Free Games API
-
-The Free Games API is the public HTTP interface to [GamerPower](https://www.gamerpower.com/), a community-tracked catalogue of free PC and console game giveaways, in-game loot drops, beta keys, and limited-time freebies. The data is curated and refreshed continuously by the GamerPower team.
-
-What you get from the API:
-- A live feed of ongoing giveaways with titles, descriptions, images, and links to claim them
-- Filtering by platform (PC, Steam, Epic Games Store, PlayStation, Xbox, etc.) and giveaway type (game, loot, beta)
-- Estimated monetary worth of active giveaways, useful for aggregate value summaries
-
-The API responds to plain HTTP GET requests and returns JSON; no API key is required. Because CORS is enabled, it is suitable for direct use from browser-side code as well as servers.
 
 ## Try it
 
@@ -47,29 +36,31 @@ gem install free-games-sdk
 luarocks install free-games-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { FreeGamesSDK } from 'free-games'
 
-const client = new FreeGamesSDK({})
+const client = new FreeGamesSDK({
+  apikey: process.env.FREE-GAMES_APIKEY,
+})
 
 // List all giveaways
 const giveaways = await client.Giveaway().list()
+console.log(giveaways.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -99,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Giveaway** | An individual free-game, loot, or beta-key promotion tracked by GamerPower, typically served from `GET /giveaways`. | `/giveaways` |
-| **Worth** | Aggregate monetary-value summary of currently active giveaways, useful for showing the total "worth" of free items available. | `/worth` |
+| **Giveaway** |  | `/giveaways` |
+| **Worth** |  | `/worth` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -110,17 +101,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from freegames_sdk import FreeGamesSDK
 
-client = FreeGamesSDK({})
+client = FreeGamesSDK({
+    "apikey": os.environ.get("FREE-GAMES_APIKEY"),
+})
 
 # List all giveaways
-giveaways, err = client.Giveaway(None).list(None, None)
+giveaways, err = client.Giveaway().list()
+print(giveaways)
 
 # Load a specific giveaway
-giveaway, err = client.Giveaway(None).load(
-    {"id": "example_id"}, None
-)
+giveaway, err = client.Giveaway().load({"id": "example_id"})
+print(giveaway)
 ```
 
 ### PHP
@@ -129,15 +123,17 @@ giveaway, err = client.Giveaway(None).load(
 <?php
 require_once 'freegames_sdk.php';
 
-$client = new FreeGamesSDK([]);
+$client = new FreeGamesSDK([
+    "apikey" => getenv("FREE-GAMES_APIKEY"),
+]);
 
 // List all giveaways
-[$giveaways, $err] = $client->Giveaway(null)->list(null, null);
+[$giveaways, $err] = $client->Giveaway()->list();
+print_r($giveaways);
 
 // Load a specific giveaway
-[$giveaway, $err] = $client->Giveaway(null)->load(
-    ["id" => "example_id"], null
-);
+[$giveaway, $err] = $client->Giveaway()->load(["id" => "example_id"]);
+print_r($giveaway);
 ```
 
 ### Golang
@@ -145,10 +141,13 @@ $client = new FreeGamesSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/free-games-sdk/go"
 
-client := sdk.NewFreeGamesSDK(map[string]any{})
+client := sdk.NewFreeGamesSDK(map[string]any{
+    "apikey": os.Getenv("FREE-GAMES_APIKEY"),
+})
 
 // List all giveaways
 giveaways, err := client.Giveaway(nil).List(nil, nil)
+fmt.Println(giveaways)
 ```
 
 ### Ruby
@@ -156,15 +155,17 @@ giveaways, err := client.Giveaway(nil).List(nil, nil)
 ```ruby
 require_relative "FreeGames_sdk"
 
-client = FreeGamesSDK.new({})
+client = FreeGamesSDK.new({
+  "apikey" => ENV["FREE-GAMES_APIKEY"],
+})
 
 # List all giveaways
-giveaways, err = client.Giveaway(nil).list(nil, nil)
+giveaways, err = client.Giveaway().list
+puts giveaways
 
 # Load a specific giveaway
-giveaway, err = client.Giveaway(nil).load(
-  { "id" => "example_id" }, nil
-)
+giveaway, err = client.Giveaway().load({ "id" => "example_id" })
+puts giveaway
 ```
 
 ### Lua
@@ -172,15 +173,17 @@ giveaway, err = client.Giveaway(nil).load(
 ```lua
 local sdk = require("free-games_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("FREE-GAMES_APIKEY"),
+})
 
 -- List all giveaways
-local giveaways, err = client:Giveaway(nil):list(nil, nil)
+local giveaways, err = client:Giveaway():list()
+print(giveaways)
 
 -- Load a specific giveaway
-local giveaway, err = client:Giveaway(nil):load(
-  { id = "example_id" }, nil
-)
+local giveaway, err = client:Giveaway():load({ id = "example_id" })
+print(giveaway)
 ```
 
 ## Unit testing in offline mode
@@ -199,25 +202,21 @@ const result = await client.Giveaway().load({ id: 'test01' })
 ### Python
 
 ```python
-client = FreeGamesSDK.test(None, None)
-result, err = client.Giveaway(None).load(
-    {"id": "test01"}, None
-)
+client = FreeGamesSDK.test()
+result, err = client.Giveaway().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = FreeGamesSDK::test(null, null);
-[$result, $err] = $client->Giveaway(null)->load(
-    ["id" => "test01"], null
-);
+$client = FreeGamesSDK::test();
+[$result, $err] = $client->Giveaway()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Giveaway(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -226,19 +225,15 @@ result, err := client.Giveaway(nil).Load(
 ### Ruby
 
 ```ruby
-client = FreeGamesSDK.test(nil, nil)
-result, err = client.Giveaway(nil).load(
-  { "id" => "test01" }, nil
-)
+client = FreeGamesSDK.test
+result, err = client.Giveaway().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Giveaway(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Giveaway():load({ id = "test01" })
 ```
 
 ## How it works
@@ -342,16 +337,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Free Games API
-
-- Upstream: [https://www.gamerpower.com/](https://www.gamerpower.com/)
-- API docs: [https://www.gamerpower.com/api-read](https://www.gamerpower.com/api-read)
-
-- No authentication or API key required for public endpoints
-- Operated by [GamerPower](https://www.gamerpower.com/); no formal open licence is published
-- Attribution to GamerPower is the expected courtesy when redistributing the data
-- CORS is enabled, so the API can be called directly from browser clients
 
 ---
 

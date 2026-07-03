@@ -17,27 +17,7 @@ main: {
       ]
       title: "Free Games API"
       version: "1.0.0"
-      tagline: "Find current free game giveaways, in-game loot, and beta keys aggregated by GamerPower"
-      homepage: "https://www.gamerpower.com/"
-      docs_url: "https://www.gamerpower.com/api-read"
-      license_short: "Free public API with no authentication; check GamerPower's site for attribution terms."
-      license_md: `- No authentication or API key required for public endpoints
-- Operated by [GamerPower](https://www.gamerpower.com/); no formal open licence is published
-- Attribution to GamerPower is the expected courtesy when redistributing the data
-- CORS is enabled, so the API can be called directly from browser clients`
-      about_md: `The Free Games API is the public HTTP interface to [GamerPower](https://www.gamerpower.com/), a community-tracked catalogue of free PC and console game giveaways, in-game loot drops, beta keys, and limited-time freebies. The data is curated and refreshed continuously by the GamerPower team.
-
-What you get from the API:
-- A live feed of ongoing giveaways with titles, descriptions, images, and links to claim them
-- Filtering by platform (PC, Steam, Epic Games Store, PlayStation, Xbox, etc.) and giveaway type (game, loot, beta)
-- Estimated monetary worth of active giveaways, useful for aggregate value summaries
-
-The API responds to plain HTTP GET requests and returns JSON; no API key is required. Because CORS is enabled, it is suitable for direct use from browser-side code as well as servers.`
-      entity_desc: {
-        giveaway: "An individual free-game, loot, or beta-key promotion tracked by GamerPower, typically served from `GET /giveaways`."
-        worth: "Aggregate monetary-value summary of currently active giveaways, useful for showing the total \"worth\" of free items available."
-      }
-      auth: false
     }
   }
 }
+

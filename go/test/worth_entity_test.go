@@ -117,6 +117,7 @@ func worthBasicSetup(extra map[string]any) *entityTestSetup {
 		"FREEGAMES_TEST_WORTH_ENTID": idmap,
 		"FREEGAMES_TEST_LIVE":      "FALSE",
 		"FREEGAMES_TEST_EXPLAIN":   "FALSE",
+		"FREEGAMES_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["FREEGAMES_TEST_WORTH_ENTID"])
@@ -127,6 +128,7 @@ func worthBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["FREEGAMES_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["FREEGAMES_APIKEY"],
 			},
 			extra,
 		})
