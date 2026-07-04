@@ -9,9 +9,12 @@ The TypeScript SDK for the FreeGames API — a type-safe, entity-oriented client
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/free-games
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/free-games-sdk/releases](https://github.com/voxgig-sdk/free-games-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { FreeGamesSDK } from 'free-games'
+import { FreeGamesSDK } from '@voxgig-sdk/free-games'
 
-const client = new FreeGamesSDK({
-  apikey: process.env.FREE-GAMES_APIKEY,
-})
+const client = new FreeGamesSDK()
 ```
 
 ### 2. List giveaways
 
 ```ts
-const result = await client.Giveaway().list()
+const result = await client.giveaway.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -42,7 +43,7 @@ if (result.ok) {
 ### 3. Load a giveaway
 
 ```ts
-const result = await client.Giveaway().load({ id: 'example_id' })
+const result = await client.giveaway.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +92,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = FreeGamesSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.giveaway.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -99,7 +100,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new FreeGamesSDK({ apikey: '...' })
+const client = new FreeGamesSDK()
 const testClient = client.tester()
 ```
 
@@ -108,7 +109,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.giveaway
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,7 +136,6 @@ const logger = {
 }
 
 const client = new FreeGamesSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -145,8 +145,7 @@ const client = new FreeGamesSDK({
 Create a `.env.local` file at the project root:
 
 ```
-FREE-GAMES_TEST_LIVE=TRUE
-FREE-GAMES_APIKEY=<your-key>
+FREE_GAMES_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -164,7 +163,6 @@ cd ts && npm test
 
 ```ts
 new FreeGamesSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -175,7 +173,6 @@ new FreeGamesSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -305,7 +302,7 @@ API path: `/worth`
 
 ### Giveaway
 
-Create an instance: `const giveaway = client.Giveaway()`
+Create an instance: `const giveaway = client.giveaway`
 
 #### Operations
 
@@ -338,19 +335,19 @@ Create an instance: `const giveaway = client.Giveaway()`
 #### Example: Load
 
 ```ts
-const giveaway = await client.Giveaway().load({ id: 'giveaway_id' })
+const giveaway = await client.giveaway.load({ id: 'giveaway_id' })
 ```
 
 #### Example: List
 
 ```ts
-const giveaways = await client.Giveaway().list()
+const giveaways = await client.giveaway.list()
 ```
 
 
 ### Worth
 
-Create an instance: `const worth = client.Worth()`
+Create an instance: `const worth = client.worth`
 
 #### Operations
 
@@ -368,7 +365,7 @@ Create an instance: `const worth = client.Worth()`
 #### Example: Load
 
 ```ts
-const worth = await client.Worth().load({ id: 'worth_id' })
+const worth = await client.worth.load({ id: 'worth_id' })
 ```
 
 
@@ -429,7 +426,7 @@ free-games/
 Import the SDK from the package root:
 
 ```ts
-import { FreeGamesSDK } from 'free-games'
+import { FreeGamesSDK } from '@voxgig-sdk/free-games'
 ```
 
 ### Entity state
@@ -439,11 +436,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const giveaway = client.giveaway
+await giveaway.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// giveaway.data() now returns the loaded giveaway data
+// giveaway.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch WorthLoadMatch
+---@param ctrl? table
+---@return Worth
+---@return string? err
 function WorthEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

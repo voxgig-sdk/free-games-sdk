@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `FreeGamesSDK.test()`.
 ## GiveawayEntity
 
 ```ts
-const giveaway = client.Giveaway()
+const giveaway = client.giveaway
 ```
 
 ### Fields
@@ -153,7 +152,7 @@ const giveaway = client.Giveaway()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Giveaway().list()
+const results = await client.giveaway.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -161,7 +160,7 @@ const results = await client.Giveaway().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Giveaway().load({ id: 'giveaway_id' })
+const result = await client.giveaway.load({ id: 'giveaway_id' })
 ```
 
 ### Common Methods
@@ -195,7 +194,7 @@ Return a copy of the entity options.
 ## WorthEntity
 
 ```ts
-const worth = client.Worth()
+const worth = client.worth
 ```
 
 ### Fields
@@ -212,7 +211,7 @@ const worth = client.Worth()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Worth().load({ id: 'worth_id' })
+const result = await client.worth.load({ id: 'worth_id' })
 ```
 
 ### Common Methods

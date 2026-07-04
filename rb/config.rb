@@ -15,9 +15,6 @@ module FreeGamesConfig
       },
       "options" => {
         "base" => "https://www.gamerpower.com/api",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

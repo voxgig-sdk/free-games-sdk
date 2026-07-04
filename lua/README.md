@@ -9,12 +9,9 @@ The Lua SDK for the FreeGames API — an entity-oriented client using Lua conven
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-free-games
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/free-games-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("free-games_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("FREE-GAMES_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 2. List giveaways
 
 ```lua
-local result, err = client:Giveaway():list()
+local result, err = client:giveaway():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -53,7 +48,7 @@ end
 ### 3. Load a giveaway
 
 ```lua
-local result, err = client:Giveaway():load({ id = "example_id" })
+local result, err = client:giveaway():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -101,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:FreeGames():load({ id = "test01" })
+local result, err = client:giveaway():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -134,8 +129,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-FREE-GAMES_TEST_LIVE=TRUE
-FREE-GAMES_APIKEY=<your-key>
+FREE_GAMES_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -158,7 +152,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -262,7 +255,7 @@ API path: `/worth`
 
 ### Giveaway
 
-Create an instance: `const giveaway = client.Giveaway()`
+Create an instance: `const giveaway = client.giveaway`
 
 #### Operations
 
@@ -295,19 +288,19 @@ Create an instance: `const giveaway = client.Giveaway()`
 #### Example: Load
 
 ```ts
-const giveaway = await client.Giveaway().load({ id: 'giveaway_id' })
+const giveaway = await client.giveaway.load({ id: 'giveaway_id' })
 ```
 
 #### Example: List
 
 ```ts
-const giveaways = await client.Giveaway().list()
+const giveaways = await client.giveaway.list()
 ```
 
 
 ### Worth
 
-Create an instance: `const worth = client.Worth()`
+Create an instance: `const worth = client.worth`
 
 #### Operations
 
@@ -325,7 +318,7 @@ Create an instance: `const worth = client.Worth()`
 #### Example: Load
 
 ```ts
-const worth = await client.Worth().load({ id: 'worth_id' })
+const worth = await client.worth.load({ id: 'worth_id' })
 ```
 
 
@@ -400,11 +393,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local giveaway = client:giveaway()
+giveaway:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- giveaway:data_get() now returns the loaded giveaway data
+-- giveaway:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -3,6 +3,8 @@
 import { GiveawayEntity } from './entity/GiveawayEntity'
 import { WorthEntity } from './entity/WorthEntity'
 
+export type * from './FreeGamesTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class FreeGamesSDK {
 
 
 
+  _giveaway?: GiveawayEntity
+
+  // Idiomatic facade: `client.giveaway.list()` / `client.giveaway.load({ id })`.
+  get giveaway(): GiveawayEntity {
+    return (this._giveaway ??= new GiveawayEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.giveaway` instead. */
   Giveaway(data?: any) {
     const self = this
     return new GiveawayEntity(self,data)
   }
 
 
+  _worth?: WorthEntity
+
+  // Idiomatic facade: `client.worth.list()` / `client.worth.load({ id })`.
+  get worth(): WorthEntity {
+    return (this._worth ??= new WorthEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.worth` instead. */
   Worth(data?: any) {
     const self = this
     return new WorthEntity(self,data)

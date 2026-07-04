@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Giveaway,
+  GiveawayLoadMatch,
+  GiveawayListMatch,
+} from '../FreeGamesTypes'
 
 // TODO: needs Entity superclass
-class GiveawayEntity extends FreeGamesEntityBase {
+class GiveawayEntity extends FreeGamesEntityBase<Giveaway> {
 
   constructor(client: FreeGamesSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class GiveawayEntity extends FreeGamesEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: GiveawayLoadMatch, ctrl?: Control): Promise<Giveaway> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class GiveawayEntity extends FreeGamesEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Giveaway> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: GiveawayListMatch, ctrl?: Control): Promise<Giveaway[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class GiveawayEntity extends FreeGamesEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Giveaway[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

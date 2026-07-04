@@ -85,6 +85,27 @@ func (e *GiveawayEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Giveaway; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *GiveawayEntity) DataTyped(data ...Giveaway) Giveaway {
+	if len(data) > 0 {
+		return typedFrom[Giveaway](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Giveaway](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Giveaway (all fields
+// optional at the wire level).
+func (e *GiveawayEntity) MatchTyped(match ...Giveaway) Giveaway {
+	if len(match) > 0 {
+		return typedFrom[Giveaway](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Giveaway](e.Match())
+}
+
 
 func (e *GiveawayEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *GiveawayEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// GiveawayLoadMatch and returns an Giveaway. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *GiveawayEntity) LoadTyped(reqmatch GiveawayLoadMatch, ctrl map[string]any) (Giveaway, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Giveaway{}, err
+	}
+	return typedFrom[Giveaway](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *GiveawayEntity) List(reqmatch map[string]any, ctrl map[string]any) (any
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// GiveawayListMatch and returns []Giveaway. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *GiveawayEntity) ListTyped(reqmatch GiveawayListMatch, ctrl map[string]any) ([]Giveaway, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Giveaway](res), nil
 }
 
 

@@ -9,11 +9,9 @@ The Python SDK for the FreeGames API — an entity-oriented client following Pyt
 
 
 ## Install
-```bash
-pip install voxgig-sdk-free-games
-```
-
-Or install from source:
+This package is not yet published to PyPI. Install it from the GitHub
+release tag (`py/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/free-games-sdk/releases)) or
+from a source checkout:
 
 ```bash
 pip install -e .
@@ -28,34 +26,31 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from freegames_sdk import FreeGamesSDK
 
-client = FreeGamesSDK({
-    "apikey": os.environ.get("FREE-GAMES_APIKEY"),
-})
+client = FreeGamesSDK()
 ```
 
 ### 2. List giveaways
 
 ```python
-result, err = client.Giveaway().list()
-if err:
-    raise Exception(err)
-
-if isinstance(result, list):
+try:
+    result = client.giveaway.list()
     for item in result:
         d = item.data_get()
         print(d["id"], d["name"])
+except Exception as err:
+    print(f"list failed: {err}")
 ```
 
 ### 3. Load a giveaway
 
 ```python
-result, err = client.Giveaway().load({"id": "example_id"})
-if err:
-    raise Exception(err)
-print(result)
+try:
+    result = client.giveaway.load({"id": "example_id"})
+    print(result)
+except Exception as err:
+    print(f"load failed: {err}")
 ```
 
 
@@ -66,29 +61,28 @@ print(result)
 For endpoints not covered by entity methods:
 
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
+else:
+    print(result["err"])     # error value
 ```
 
 ### Prepare a request without sending it
 
 ```python
-fetchdef, err = client.prepare({
+# prepare() returns the fetch definition and raises on error.
+fetchdef = client.prepare({
     "path": "/api/resource/{id}",
     "method": "DELETE",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 print(fetchdef["url"])
 print(fetchdef["method"])
@@ -102,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```python
 client = FreeGamesSDK.test()
 
-result, err = client.FreeGames().load({"id": "test01"})
+result = client.giveaway.load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -132,8 +126,7 @@ client = FreeGamesSDK({
 Create a `.env.local` file at the project root:
 
 ```
-FREE-GAMES_TEST_LIVE=TRUE
-FREE-GAMES_APIKEY=<your-key>
+FREE_GAMES_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -157,7 +150,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |
@@ -179,8 +171,8 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | --- | --- | --- |
 | `options_map` | `() -> dict` | Deep copy of current SDK options. |
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
-| `prepare` | `(fetchargs) -> (dict, err)` | Build an HTTP request definition without sending. |
-| `direct` | `(fetchargs) -> (dict, err)` | Build and send an HTTP request. |
+| `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
+| `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `Giveaway` | `(data) -> GiveawayEntity` | Create a Giveaway entity instance. |
 | `Worth` | `(data) -> WorthEntity` | Create a Worth entity instance. |
 
@@ -190,11 +182,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> (any, err)` | Load a single entity by match criteria. |
-| `list` | `(reqmatch, ctrl) -> (any, err)` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> (any, err)` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> (any, err)` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> (any, err)` | Remove an entity. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
+| `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
+| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -204,8 +196,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`dict` with these keys:
+Entity operations return the bare result data (a `dict` for single-entity
+ops, a `list` for `list`) and raise on error. Wrap calls in
+`try`/`except` to handle failures.
+
+The `direct()` escape hatch never raises — it returns a result `dict`
+you branch on via `result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -261,7 +257,7 @@ API path: `/worth`
 
 ### Giveaway
 
-Create an instance: `const giveaway = client.Giveaway()`
+Create an instance: `const giveaway = client.giveaway`
 
 #### Operations
 
@@ -294,19 +290,19 @@ Create an instance: `const giveaway = client.Giveaway()`
 #### Example: Load
 
 ```ts
-const giveaway = await client.Giveaway().load({ id: 'giveaway_id' })
+const giveaway = await client.giveaway.load({ id: 'giveaway_id' })
 ```
 
 #### Example: List
 
 ```ts
-const giveaways = await client.Giveaway().list()
+const giveaways = await client.giveaway.list()
 ```
 
 
 ### Worth
 
-Create an instance: `const worth = client.Worth()`
+Create an instance: `const worth = client.worth`
 
 #### Operations
 
@@ -324,7 +320,7 @@ Create an instance: `const worth = client.Worth()`
 #### Example: Load
 
 ```ts
-const worth = await client.Worth().load({ id: 'worth_id' })
+const worth = await client.worth.load({ id: 'worth_id' })
 ```
 
 
@@ -398,11 +394,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-moon = client.Moon()
-moon.load({"planet_id": "earth", "id": "luna"})
+giveaway = client.giveaway
+giveaway.load({"id": "example_id"})
 
-# moon.data_get() now returns the loaded moon data
-# moon.match_get() returns the last match criteria
+# giveaway.data_get() now returns the loaded giveaway data
+# giveaway.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

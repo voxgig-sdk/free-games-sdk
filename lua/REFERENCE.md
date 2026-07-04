@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -88,7 +87,7 @@ same parameters as `direct()`.
 ## GiveawayEntity
 
 ```lua
-local giveaway = client:Giveaway(nil)
+local giveaway = client:giveaway(nil)
 ```
 
 ### Fields
@@ -119,7 +118,7 @@ local giveaway = client:Giveaway(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Giveaway():list()
+local results, err = client:giveaway():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -127,7 +126,7 @@ local results, err = client:Giveaway():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Giveaway():load({ id = "giveaway_id" })
+local result, err = client:giveaway():load({ id = "giveaway_id" })
 ```
 
 ### Common Methods
@@ -163,7 +162,7 @@ Return the entity name.
 ## WorthEntity
 
 ```lua
-local worth = client:Worth(nil)
+local worth = client:worth(nil)
 ```
 
 ### Fields
@@ -180,7 +179,7 @@ local worth = client:Worth(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Worth():load({ id = "worth_id" })
+local result, err = client:worth():load({ id = "worth_id" })
 ```
 
 ### Common Methods

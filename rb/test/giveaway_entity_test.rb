@@ -43,16 +43,14 @@ class GiveawayEntityTest < Minitest::Test
     giveaway_ref01_ent = client.Giveaway(nil)
     giveaway_ref01_match = {}
 
-    giveaway_ref01_list_result, err = giveaway_ref01_ent.list(giveaway_ref01_match, nil)
-    assert_nil err
+    giveaway_ref01_list_result = giveaway_ref01_ent.list(giveaway_ref01_match, nil)
     assert giveaway_ref01_list_result.is_a?(Array)
 
     # LOAD
     giveaway_ref01_match_dt0 = {
       "id" => giveaway_ref01_data["id"],
     }
-    giveaway_ref01_data_dt0_loaded, err = giveaway_ref01_ent.load(giveaway_ref01_match_dt0, nil)
-    assert_nil err
+    giveaway_ref01_data_dt0_loaded = giveaway_ref01_ent.load(giveaway_ref01_match_dt0, nil)
     giveaway_ref01_data_dt0_load_result = Helpers.to_map(giveaway_ref01_data_dt0_loaded)
     assert !giveaway_ref01_data_dt0_load_result.nil?
     assert_equal giveaway_ref01_data_dt0_load_result["id"], giveaway_ref01_data["id"]
@@ -93,7 +91,6 @@ def giveaway_basic_setup(extra)
     "FREEGAMES_TEST_GIVEAWAY_ENTID" => idmap,
     "FREEGAMES_TEST_LIVE" => "FALSE",
     "FREEGAMES_TEST_EXPLAIN" => "FALSE",
-    "FREEGAMES_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def giveaway_basic_setup(extra)
   if env["FREEGAMES_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FREEGAMES_APIKEY"],
       },
       extra || {},
     ])

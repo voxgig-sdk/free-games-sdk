@@ -42,8 +42,7 @@ class WorthEntityTest < Minitest::Test
     # LOAD
     worth_ref01_ent = client.Worth(nil)
     worth_ref01_match_dt0 = {}
-    worth_ref01_data_dt0_loaded, err = worth_ref01_ent.load(worth_ref01_match_dt0, nil)
-    assert_nil err
+    worth_ref01_data_dt0_loaded = worth_ref01_ent.load(worth_ref01_match_dt0, nil)
     assert !worth_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def worth_basic_setup(extra)
     "FREEGAMES_TEST_WORTH_ENTID" => idmap,
     "FREEGAMES_TEST_LIVE" => "FALSE",
     "FREEGAMES_TEST_EXPLAIN" => "FALSE",
-    "FREEGAMES_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def worth_basic_setup(extra)
   if env["FREEGAMES_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FREEGAMES_APIKEY"],
       },
       extra || {},
     ])

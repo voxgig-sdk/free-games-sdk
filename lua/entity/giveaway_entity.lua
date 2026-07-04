@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch GiveawayLoadMatch
+---@param ctrl? table
+---@return Giveaway
+---@return string? err
 function GiveawayEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch GiveawayListMatch
+---@param ctrl? table
+---@return Giveaway[]
+---@return string? err
 function GiveawayEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

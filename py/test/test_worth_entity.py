@@ -49,8 +49,7 @@ class TestWorthEntity:
         # LOAD
         worth_ref01_ent = client.Worth(None)
         worth_ref01_match_dt0 = {}
-        worth_ref01_data_dt0_loaded, err = worth_ref01_ent.load(worth_ref01_match_dt0, None)
-        assert err is None
+        worth_ref01_data_dt0_loaded = worth_ref01_ent.load(worth_ref01_match_dt0, None)
         assert worth_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _worth_basic_setup(extra):
         "FREEGAMES_TEST_WORTH_ENTID": idmap,
         "FREEGAMES_TEST_LIVE": "FALSE",
         "FREEGAMES_TEST_EXPLAIN": "FALSE",
-        "FREEGAMES_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _worth_basic_setup(extra):
     if env.get("FREEGAMES_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FREEGAMES_APIKEY"),
             },
             extra or {},
         ])

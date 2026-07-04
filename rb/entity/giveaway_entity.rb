@@ -45,6 +45,7 @@ class GiveawayEntity
     end
   end
 
+  # @return [Giveaway, Hash] the current Giveaway data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class GiveawayEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Giveaway fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Giveaway.
+  #
+  # @param reqmatch [GiveawayLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Giveaway, Hash] the loaded Giveaway; raises FreeGamesError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class GiveawayEntity
 
 
   
+  # List Giveaway items matching the given filter.
+  #
+  # @param reqmatch [GiveawayListMatch, Hash, nil] match filter (any subset of Giveaway fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Giveaway>, Array] the matching Giveaway items; raises FreeGamesError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

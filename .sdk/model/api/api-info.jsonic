@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "GamerPower API Documentation"
         url: "https://www.gamerpower.com/api-read"

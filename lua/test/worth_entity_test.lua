@@ -91,7 +91,6 @@ function worth_basic_setup(extra)
     ["FREEGAMES_TEST_WORTH_ENTID"] = idmap,
     ["FREEGAMES_TEST_LIVE"] = "FALSE",
     ["FREEGAMES_TEST_EXPLAIN"] = "FALSE",
-    ["FREEGAMES_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ function worth_basic_setup(extra)
   if env["FREEGAMES_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["FREEGAMES_APIKEY"],
       },
       extra or {},
     })

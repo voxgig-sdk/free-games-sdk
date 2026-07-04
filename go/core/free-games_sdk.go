@@ -245,11 +245,17 @@ func (sdk *FreeGamesSDK) Direct(fetchargs map[string]any) (map[string]any, error
 }
 
 
+// Giveaway returns a Giveaway entity bound to this client.
+// Idiomatic usage: client.Giveaway(nil).List(nil, nil) or
+// client.Giveaway(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FreeGamesSDK) Giveaway(data map[string]any) FreeGamesEntity {
 	return NewGiveawayEntityFunc(sdk, data)
 }
 
 
+// Worth returns a Worth entity bound to this client.
+// Idiomatic usage: client.Worth(nil).List(nil, nil) or
+// client.Worth(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FreeGamesSDK) Worth(data map[string]any) FreeGamesEntity {
 	return NewWorthEntityFunc(sdk, data)
 }

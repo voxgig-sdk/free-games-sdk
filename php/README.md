@@ -9,9 +9,10 @@ The PHP SDK for the FreeGames API — an entity-oriented client using PHP conven
 
 
 ## Install
-```bash
-composer require voxgig-sdk/free-games
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/free-games-sdk/releases](https://github.com/voxgig-sdk/free-games-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,31 +26,34 @@ loading a specific record.
 <?php
 require_once 'freegames_sdk.php';
 
-$client = new FreeGamesSDK([
-    "apikey" => getenv("FREE-GAMES_APIKEY"),
-]);
+$client = new FreeGamesSDK();
 ```
 
 ### 2. List giveaways
 
 ```php
-[$result, $err] = $client->Giveaway()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->giveaway()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
 ### 3. Load a giveaway
 
 ```php
-[$result, $err] = $client->Giveaway()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->giveaway()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -60,28 +64,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -95,7 +102,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = FreeGamesSDK::test();
 
-[$result, $err] = $client->FreeGames()->load(["id" => "test01"]);
+$result = $client->giveaway()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -129,8 +136,7 @@ $client = new FreeGamesSDK([
 Create a `.env.local` file at the project root:
 
 ```
-FREE-GAMES_TEST_LIVE=TRUE
-FREE-GAMES_APIKEY=<your-key>
+FREE_GAMES_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -153,7 +159,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -200,8 +205,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -257,7 +266,7 @@ API path: `/worth`
 
 ### Giveaway
 
-Create an instance: `const giveaway = client.Giveaway()`
+Create an instance: `const giveaway = client.giveaway`
 
 #### Operations
 
@@ -290,19 +299,19 @@ Create an instance: `const giveaway = client.Giveaway()`
 #### Example: Load
 
 ```ts
-const giveaway = await client.Giveaway().load({ id: 'giveaway_id' })
+const giveaway = await client.giveaway.load({ id: 'giveaway_id' })
 ```
 
 #### Example: List
 
 ```ts
-const giveaways = await client.Giveaway().list()
+const giveaways = await client.giveaway.list()
 ```
 
 
 ### Worth
 
-Create an instance: `const worth = client.Worth()`
+Create an instance: `const worth = client.worth`
 
 #### Operations
 
@@ -320,7 +329,7 @@ Create an instance: `const worth = client.Worth()`
 #### Example: Load
 
 ```ts
-const worth = await client.Worth().load({ id: 'worth_id' })
+const worth = await client.worth.load({ id: 'worth_id' })
 ```
 
 
@@ -395,11 +404,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$giveaway = $client->giveaway();
+$giveaway->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $giveaway->dataGet() now returns the loaded giveaway data
+// $giveaway->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

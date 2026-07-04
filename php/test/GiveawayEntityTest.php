@@ -50,16 +50,14 @@ class GiveawayEntityTest extends TestCase
         $giveaway_ref01_ent = $client->Giveaway(null);
         $giveaway_ref01_match = [];
 
-        [$giveaway_ref01_list_result, $err] = $giveaway_ref01_ent->list($giveaway_ref01_match, null);
-        $this->assertNull($err);
+        $giveaway_ref01_list_result = $giveaway_ref01_ent->list($giveaway_ref01_match, null);
         $this->assertIsArray($giveaway_ref01_list_result);
 
         // LOAD
         $giveaway_ref01_match_dt0 = [
             "id" => $giveaway_ref01_data["id"],
         ];
-        [$giveaway_ref01_data_dt0_loaded, $err] = $giveaway_ref01_ent->load($giveaway_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $giveaway_ref01_data_dt0_loaded = $giveaway_ref01_ent->load($giveaway_ref01_match_dt0, null);
         $giveaway_ref01_data_dt0_load_result = Helpers::to_map($giveaway_ref01_data_dt0_loaded);
         $this->assertNotNull($giveaway_ref01_data_dt0_load_result);
         $this->assertEquals($giveaway_ref01_data_dt0_load_result["id"], $giveaway_ref01_data["id"]);
@@ -96,7 +94,6 @@ function giveaway_basic_setup($extra)
         "FREEGAMES_TEST_GIVEAWAY_ENTID" => $idmap,
         "FREEGAMES_TEST_LIVE" => "FALSE",
         "FREEGAMES_TEST_EXPLAIN" => "FALSE",
-        "FREEGAMES_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function giveaway_basic_setup($extra)
     if ($env["FREEGAMES_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FREEGAMES_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -144,16 +144,23 @@ class FreeGamesSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class FreeGamesSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,20 +212,42 @@ class FreeGamesSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def giveaway(self):
+        """Idiomatic facade: client.giveaway.list() / client.giveaway.load({"id": ...})."""
+        from entity.giveaway_entity import GiveawayEntity
+        cached = getattr(self, "_giveaway", None)
+        if cached is None:
+            cached = GiveawayEntity(self, None)
+            self._giveaway = cached
+        return cached
 
     def Giveaway(self, data=None):
+        # Deprecated: use client.giveaway instead.
         from entity.giveaway_entity import GiveawayEntity
         return GiveawayEntity(self, data)
 
 
+    @property
+    def worth(self):
+        """Idiomatic facade: client.worth.list() / client.worth.load({"id": ...})."""
+        from entity.worth_entity import WorthEntity
+        cached = getattr(self, "_worth", None)
+        if cached is None:
+            cached = WorthEntity(self, None)
+            self._worth = cached
+        return cached
+
     def Worth(self, data=None):
+        # Deprecated: use client.worth instead.
         from entity.worth_entity import WorthEntity
         return WorthEntity(self, data)
 
