@@ -31,24 +31,28 @@ from freegames_sdk import FreeGamesSDK
 client = FreeGamesSDK()
 ```
 
-### 2. List giveaways
+### 2. List giveaway records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.giveaway.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    giveaways = client.Giveaway().list({})
+    for giveaway in giveaways:
+        print(giveaway)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load a giveaway
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.giveaway.load({"id": "example_id"})
-    print(result)
+    giveaway = client.Giveaway().load({"id": "example_id"})
+    print(giveaway)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = FreeGamesSDK.test()
 
-result = client.giveaway.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+giveaway = client.Giveaway().load({"id": "test01"})
+# giveaway contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -257,7 +262,7 @@ API path: `/worth`
 
 ### Giveaway
 
-Create an instance: `const giveaway = client.giveaway`
+Create an instance: `giveaway = client.Giveaway()`
 
 #### Operations
 
@@ -289,20 +294,20 @@ Create an instance: `const giveaway = client.giveaway`
 
 #### Example: Load
 
-```ts
-const giveaway = await client.giveaway.load({ id: 'giveaway_id' })
+```python
+giveaway = client.Giveaway().load({"id": "giveaway_id"})
 ```
 
 #### Example: List
 
-```ts
-const giveaways = await client.giveaway.list()
+```python
+giveaways = client.Giveaway().list({})
 ```
 
 
 ### Worth
 
-Create an instance: `const worth = client.worth`
+Create an instance: `worth = client.Worth()`
 
 #### Operations
 
@@ -319,8 +324,8 @@ Create an instance: `const worth = client.worth`
 
 #### Example: Load
 
-```ts
-const worth = await client.worth.load({ id: 'worth_id' })
+```python
+worth = client.Worth().load({"id": "worth_id"})
 ```
 
 
@@ -394,7 +399,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-giveaway = client.giveaway
+giveaway = client.Giveaway()
 giveaway.load({"id": "example_id"})
 
 # giveaway.data_get() now returns the loaded giveaway data

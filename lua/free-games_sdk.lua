@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:giveaway():list() / client:giveaway():load({ id = ... })
-function FreeGamesSDK:giveaway(data)
+-- Idiomatic facade: client:Giveaway():list() / client:Giveaway():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function FreeGamesSDK:Giveaway(data)
   local EntityMod = require("entity.giveaway_entity")
   if data == nil then
     if self._giveaway == nil then
@@ -256,15 +257,10 @@ function FreeGamesSDK:giveaway(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:giveaway() instead.
-function FreeGamesSDK:Giveaway(data)
-  local EntityMod = require("entity.giveaway_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:worth():list() / client:worth():load({ id = ... })
-function FreeGamesSDK:worth(data)
+-- Idiomatic facade: client:Worth():list() / client:Worth():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function FreeGamesSDK:Worth(data)
   local EntityMod = require("entity.worth_entity")
   if data == nil then
     if self._worth == nil then
@@ -272,12 +268,6 @@ function FreeGamesSDK:worth(data)
     end
     return self._worth
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:worth() instead.
-function FreeGamesSDK:Worth(data)
-  local EntityMod = require("entity.worth_entity")
   return EntityMod.new(self, data)
 end
 

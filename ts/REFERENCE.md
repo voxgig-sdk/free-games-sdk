@@ -121,7 +121,7 @@ Alias for `FreeGamesSDK.test()`.
 ## GiveawayEntity
 
 ```ts
-const giveaway = client.giveaway
+const giveaway = client.Giveaway()
 ```
 
 ### Fields
@@ -152,7 +152,7 @@ const giveaway = client.giveaway
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.giveaway.list()
+const results = await client.Giveaway().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -160,7 +160,7 @@ const results = await client.giveaway.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.giveaway.load({ id: 'giveaway_id' })
+const result = await client.Giveaway().load({ id: 'giveaway_id' })
 ```
 
 ### Common Methods
@@ -194,7 +194,7 @@ Return a copy of the entity options.
 ## WorthEntity
 
 ```ts
-const worth = client.worth
+const worth = client.Worth()
 ```
 
 ### Fields
@@ -211,7 +211,7 @@ const worth = client.worth
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.worth.load({ id: 'worth_id' })
+const result = await client.Worth().load({ id: 'worth_id' })
 ```
 
 ### Common Methods

@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## GiveawayEntity
 
 ```ruby
-giveaway = client.giveaway
+giveaway = client.Giveaway
 ```
 
 ### Fields
@@ -121,7 +121,7 @@ giveaway = client.giveaway
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.giveaway.list(nil)
+results = client.Giveaway.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -129,7 +129,7 @@ results = client.giveaway.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.giveaway.load({ "id" => "giveaway_id" })
+result = client.Giveaway.load({ "id" => "giveaway_id" })
 ```
 
 ### Common Methods
@@ -165,7 +165,7 @@ Return the entity name.
 ## WorthEntity
 
 ```ruby
-worth = client.worth
+worth = client.Worth
 ```
 
 ### Fields
@@ -182,7 +182,7 @@ worth = client.worth
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.worth.load({ "id" => "worth_id" })
+result = client.Worth.load({ "id" => "worth_id" })
 ```
 
 ### Common Methods

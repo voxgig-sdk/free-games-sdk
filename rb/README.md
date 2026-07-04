@@ -28,16 +28,14 @@ require_relative "FreeGames_sdk"
 client = FreeGamesSDK.new
 ```
 
-### 2. List giveaways
+### 2. List giveaway records
 
 ```ruby
 begin
-  result = client.giveaway.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Giveaway records — iterate directly.
+  giveaways = client.Giveaway.list
+  giveaways.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.giveaway.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Giveaway record (raises on error).
+  giveaway = client.Giveaway.load({ "id" => "example_id" })
+  puts giveaway
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = FreeGamesSDK.test
+client = FreeGamesSDK.test({
+  "entity" => { "giveaway" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.giveaway.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+giveaway = client.Giveaway.load({ "id" => "test01" })
+puts giveaway
 ```
 
 ### Use a custom fetch function
@@ -261,7 +264,7 @@ API path: `/worth`
 
 ### Giveaway
 
-Create an instance: `const giveaway = client.giveaway`
+Create an instance: `giveaway = client.Giveaway`
 
 #### Operations
 
@@ -293,20 +296,22 @@ Create an instance: `const giveaway = client.giveaway`
 
 #### Example: Load
 
-```ts
-const giveaway = await client.giveaway.load({ id: 'giveaway_id' })
+```ruby
+# load returns the bare Giveaway record (raises on error).
+giveaway = client.Giveaway.load({ "id" => "giveaway_id" })
 ```
 
 #### Example: List
 
-```ts
-const giveaways = await client.giveaway.list()
+```ruby
+# list returns an Array of Giveaway records (raises on error).
+giveaways = client.Giveaway.list
 ```
 
 
 ### Worth
 
-Create an instance: `const worth = client.worth`
+Create an instance: `worth = client.Worth`
 
 #### Operations
 
@@ -323,8 +328,9 @@ Create an instance: `const worth = client.worth`
 
 #### Example: Load
 
-```ts
-const worth = await client.worth.load({ id: 'worth_id' })
+```ruby
+# load returns the bare Worth record (raises on error).
+worth = client.Worth.load({ "id" => "worth_id" })
 ```
 
 
@@ -399,7 +405,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-giveaway = client.giveaway
+giveaway = client.Giveaway
 giveaway.load({ "id" => "example_id" })
 
 # giveaway.data_get now returns the loaded giveaway data

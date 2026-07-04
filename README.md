@@ -26,9 +26,11 @@ import { FreeGamesSDK } from '@voxgig-sdk/free-games'
 
 const client = new FreeGamesSDK()
 
-// List all giveaways
-const giveaways = await client.giveaway.list()
-console.log(giveaways.data)
+// List all giveaways (returns Giveaway[])
+const giveaways = await client.Giveaway().list()
+for (const giveaway of giveaways) {
+  console.log(giveaway)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,12 +86,13 @@ from freegames_sdk import FreeGamesSDK
 
 client = FreeGamesSDK()
 
-# List all giveaways
-giveaways = client.giveaway.list()
-print(giveaways)
+# List all giveaways (returns a list, raises on error)
+giveaways = client.Giveaway().list({})
+for giveaway in giveaways:
+    print(giveaway)
 
-# Load a specific giveaway
-giveaway = client.giveaway.load({"id": "example_id"})
+# Load a specific giveaway (returns the record, raises on error)
+giveaway = client.Giveaway().load({"id": "example_id"})
 print(giveaway)
 ```
 
@@ -101,12 +104,12 @@ require_once 'freegames_sdk.php';
 
 $client = new FreeGamesSDK();
 
-// List all giveaways (throws on error)
-$giveaways = $client->giveaway()->list();
+// List all giveaways (returns an array; throws on error)
+$giveaways = $client->Giveaway()->list();
 print_r($giveaways);
 
-// Load a specific giveaway
-$giveaway = $client->giveaway()->load(["id" => "example_id"]);
+// Load a specific giveaway (returns the bare record; throws on error)
+$giveaway = $client->Giveaway()->load(["id" => "example_id"]);
 print_r($giveaway);
 ```
 
@@ -129,12 +132,12 @@ require_relative "FreeGames_sdk"
 
 client = FreeGamesSDK.new
 
-# List all giveaways
-giveaways = client.giveaway.list
+# List all giveaways (returns an Array; raises on error)
+giveaways = client.Giveaway.list
 puts giveaways
 
-# Load a specific giveaway
-giveaway = client.giveaway.load({ "id" => "example_id" })
+# Load a specific giveaway (returns the bare record; raises on error)
+giveaway = client.Giveaway.load({ "id" => "example_id" })
 puts giveaway
 ```
 
@@ -146,11 +149,11 @@ local sdk = require("free-games_sdk")
 local client = sdk.new()
 
 -- List all giveaways
-local giveaways, err = client:giveaway():list()
+local giveaways, err = client:Giveaway():list()
 print(giveaways)
 
 -- Load a specific giveaway
-local giveaway, err = client:giveaway():load({ id = "example_id" })
+local giveaway, err = client:Giveaway():load({ id = "example_id" })
 print(giveaway)
 ```
 
@@ -163,22 +166,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = FreeGamesSDK.test()
-const result = await client.giveaway.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const giveaway = await client.Giveaway().load({ id: 1 })
+// giveaway is a bare Giveaway populated with mock data
+console.log(giveaway)
 ```
 
 ### Python
 
 ```python
 client = FreeGamesSDK.test()
-result = client.giveaway.load({"id": "test01"})
+giveaway = client.Giveaway().load({"id": "test01"})
+print(giveaway)
 ```
 
 ### PHP
 
 ```php
-$client = FreeGamesSDK::test();
-$result = $client->giveaway()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = FreeGamesSDK::test([
+    "entity" => ["giveaway" => ["test01" => ["id" => "test01"]]],
+]);
+$giveaway = $client->Giveaway()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -193,15 +201,18 @@ result, err := client.Giveaway(nil).Load(
 ### Ruby
 
 ```ruby
-client = FreeGamesSDK.test
-result = client.giveaway.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = FreeGamesSDK.test({
+  "entity" => { "giveaway" => { "test01" => { "id" => "test01" } } },
+})
+giveaway = client.Giveaway.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:giveaway():load({ id = "test01" })
+local result, err = client:Giveaway():load({ id = "test01" })
 ```
 
 ## How it works
@@ -249,6 +260,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

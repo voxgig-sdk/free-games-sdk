@@ -208,26 +208,14 @@ class FreeGamesSDK
   end
 
 
-  # Idiomatic facade: client.giveaway.list / client.giveaway.load({ "id" => ... })
-  def giveaway
-    require_relative 'entity/giveaway_entity'
-    @giveaway ||= GiveawayEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.giveaway instead.
+  # Canonical facade: client.Giveaway.list / client.Giveaway.load({ "id" => ... })
   def Giveaway(data = nil)
     require_relative 'entity/giveaway_entity'
     GiveawayEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.worth.list / client.worth.load({ "id" => ... })
-  def worth
-    require_relative 'entity/worth_entity'
-    @worth ||= WorthEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.worth instead.
+  # Canonical facade: client.Worth.list / client.Worth.load({ "id" => ... })
   def Worth(data = nil)
     require_relative 'entity/worth_entity'
     WorthEntity.new(self, data)

@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## GiveawayEntity
 
 ```lua
-local giveaway = client:giveaway(nil)
+local giveaway = client:Giveaway(nil)
 ```
 
 ### Fields
@@ -118,7 +118,7 @@ local giveaway = client:giveaway(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:giveaway():list()
+local results, err = client:Giveaway():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -126,7 +126,7 @@ local results, err = client:giveaway():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:giveaway():load({ id = "giveaway_id" })
+local result, err = client:Giveaway():load({ id = "giveaway_id" })
 ```
 
 ### Common Methods
@@ -162,7 +162,7 @@ Return the entity name.
 ## WorthEntity
 
 ```lua
-local worth = client:worth(nil)
+local worth = client:Worth(nil)
 ```
 
 ### Fields
@@ -179,7 +179,7 @@ local worth = client:worth(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:worth():load({ id = "worth_id" })
+local result, err = client:Worth():load({ id = "worth_id" })
 ```
 
 ### Common Methods

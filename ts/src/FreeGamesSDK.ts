@@ -205,28 +205,14 @@ class FreeGamesSDK {
 
 
 
-  _giveaway?: GiveawayEntity
-
-  // Idiomatic facade: `client.giveaway.list()` / `client.giveaway.load({ id })`.
-  get giveaway(): GiveawayEntity {
-    return (this._giveaway ??= new GiveawayEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.giveaway` instead. */
+  // Entity access: `client.Giveaway().list()` / `client.Giveaway().load({ id })`.
   Giveaway(data?: any) {
     const self = this
     return new GiveawayEntity(self,data)
   }
 
 
-  _worth?: WorthEntity
-
-  // Idiomatic facade: `client.worth.list()` / `client.worth.load({ id })`.
-  get worth(): WorthEntity {
-    return (this._worth ??= new WorthEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.worth` instead. */
+  // Entity access: `client.Worth().list()` / `client.Worth().load({ id })`.
   Worth(data?: any) {
     const self = this
     return new WorthEntity(self,data)

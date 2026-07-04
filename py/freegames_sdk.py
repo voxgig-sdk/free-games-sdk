@@ -220,41 +220,21 @@ class FreeGamesSDK:
         }
 
 
-    @property
-    def giveaway(self):
-        """Idiomatic facade: client.giveaway.list() / client.giveaway.load({"id": ...})."""
-        from entity.giveaway_entity import GiveawayEntity
-        cached = getattr(self, "_giveaway", None)
-        if cached is None:
-            cached = GiveawayEntity(self, None)
-            self._giveaway = cached
-        return cached
-
-    def Giveaway(self, data=None):
-        # Deprecated: use client.giveaway instead.
+    def Giveaway(self, data=None) -> "GiveawayEntity":
+        """Entity factory: client.Giveaway().list({}) / client.Giveaway().load({"id": ...})."""
         from entity.giveaway_entity import GiveawayEntity
         return GiveawayEntity(self, data)
 
 
-    @property
-    def worth(self):
-        """Idiomatic facade: client.worth.list() / client.worth.load({"id": ...})."""
-        from entity.worth_entity import WorthEntity
-        cached = getattr(self, "_worth", None)
-        if cached is None:
-            cached = WorthEntity(self, None)
-            self._worth = cached
-        return cached
-
-    def Worth(self, data=None):
-        # Deprecated: use client.worth instead.
+    def Worth(self, data=None) -> "WorthEntity":
+        """Entity factory: client.Worth().list({}) / client.Worth().load({"id": ...})."""
         from entity.worth_entity import WorthEntity
         return WorthEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "FreeGamesSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class FreeGamesSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.giveaway_entity import GiveawayEntity
+    from entity.worth_entity import WorthEntity

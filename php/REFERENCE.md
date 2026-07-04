@@ -89,7 +89,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## GiveawayEntity
 
 ```php
-$giveaway = $client->giveaway();
+$giveaway = $client->Giveaway();
 ```
 
 ### Fields
@@ -120,7 +120,7 @@ $giveaway = $client->giveaway();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->giveaway()->list([]);
+$results = $client->Giveaway()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -128,7 +128,7 @@ $results = $client->giveaway()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->giveaway()->load(["id" => "giveaway_id"]);
+$result = $client->Giveaway()->load(["id" => "giveaway_id"]);
 ```
 
 ### Common Methods
@@ -164,7 +164,7 @@ Return the entity name.
 ## WorthEntity
 
 ```php
-$worth = $client->worth();
+$worth = $client->Worth();
 ```
 
 ### Fields
@@ -181,7 +181,7 @@ $worth = $client->worth();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->worth()->load(["id" => "worth_id"]);
+$result = $client->Worth()->load(["id" => "worth_id"]);
 ```
 
 ### Common Methods

@@ -84,7 +84,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## GiveawayEntity
 
 ```python
-giveaway = client.giveaway
+giveaway = client.Giveaway()
 ```
 
 ### Fields
@@ -115,7 +115,9 @@ giveaway = client.giveaway
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.giveaway.list({})
+results = client.Giveaway().list({})
+for giveaway in results:
+    print(giveaway)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -123,7 +125,7 @@ results = client.giveaway.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.giveaway.load({"id": "giveaway_id"})
+result = client.Giveaway().load({"id": "giveaway_id"})
 ```
 
 ### Common Methods
@@ -158,7 +160,7 @@ Return the entity name.
 ## WorthEntity
 
 ```python
-worth = client.worth
+worth = client.Worth()
 ```
 
 ### Fields
@@ -175,7 +177,7 @@ worth = client.worth
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.worth.load({"id": "worth_id"})
+result = client.Worth().load({"id": "worth_id"})
 ```
 
 ### Common Methods

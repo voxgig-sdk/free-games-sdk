@@ -233,10 +233,10 @@ class FreeGamesSDK
 
     private $_giveaway = null;
 
-    // Idiomatic facade: $client->giveaway()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Giveaway() (PHP method
-    // names are case-insensitive).
-    public function giveaway($data = null)
+    // Canonical facade: $client->Giveaway()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->giveaway()
+    // resolves here too.
+    public function Giveaway($data = null)
     {
         require_once __DIR__ . '/entity/giveaway_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class FreeGamesSDK
 
     private $_worth = null;
 
-    // Idiomatic facade: $client->worth()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Worth() (PHP method
-    // names are case-insensitive).
-    public function worth($data = null)
+    // Canonical facade: $client->Worth()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->worth()
+    // resolves here too.
+    public function Worth($data = null)
     {
         require_once __DIR__ . '/entity/worth_entity.php';
         if ($data === null) {

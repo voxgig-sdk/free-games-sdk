@@ -29,18 +29,16 @@ require_once 'freegames_sdk.php';
 $client = new FreeGamesSDK();
 ```
 
-### 2. List giveaways
+### 2. List giveaway records
 
 ```php
 try {
-    $result = $client->giveaway()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Giveaway records — iterate directly.
+    $giveaways = $client->Giveaway()->list();
+    foreach ($giveaways as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->giveaway()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Giveaway record (throws on error).
+    $giveaway = $client->Giveaway()->load(["id" => "example_id"]);
+    print_r($giveaway);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = FreeGamesSDK::test();
+$client = FreeGamesSDK::test([
+    "entity" => ["giveaway" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->giveaway()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$giveaway = $client->Giveaway()->load(["id" => "test01"]);
+print_r($giveaway);
 ```
 
 ### Use a custom fetch function
@@ -266,7 +269,7 @@ API path: `/worth`
 
 ### Giveaway
 
-Create an instance: `const giveaway = client.giveaway`
+Create an instance: `$giveaway = $client->Giveaway();`
 
 #### Operations
 
@@ -298,20 +301,22 @@ Create an instance: `const giveaway = client.giveaway`
 
 #### Example: Load
 
-```ts
-const giveaway = await client.giveaway.load({ id: 'giveaway_id' })
+```php
+// load() returns the bare Giveaway record (throws on error).
+$giveaway = $client->Giveaway()->load(["id" => "giveaway_id"]);
 ```
 
 #### Example: List
 
-```ts
-const giveaways = await client.giveaway.list()
+```php
+// list() returns an array of Giveaway records (throws on error).
+$giveaways = $client->Giveaway()->list();
 ```
 
 
 ### Worth
 
-Create an instance: `const worth = client.worth`
+Create an instance: `$worth = $client->Worth();`
 
 #### Operations
 
@@ -328,8 +333,9 @@ Create an instance: `const worth = client.worth`
 
 #### Example: Load
 
-```ts
-const worth = await client.worth.load({ id: 'worth_id' })
+```php
+// load() returns the bare Worth record (throws on error).
+$worth = $client->Worth()->load(["id" => "worth_id"]);
 ```
 
 
@@ -404,7 +410,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$giveaway = $client->giveaway();
+$giveaway = $client->Giveaway();
 $giveaway->load(["id" => "example_id"]);
 
 // $giveaway->dataGet() now returns the loaded giveaway data
