@@ -25,14 +25,48 @@
 ---@field worth? string
 
 ---@class GiveawayLoadMatch
+---@field description? string
+---@field end_date? string
+---@field gamerpower_url? string
+---@field id number
+---@field image? string
+---@field instruction? string
+---@field open_giveaway? string
+---@field open_giveaway_url? string
+---@field platform? string
+---@field published_date? string
+---@field status? string
+---@field thumbnail? string
+---@field title? string
+---@field type? string
+---@field user? number
+---@field worth? string
 
 ---@class GiveawayListMatch
+---@field description? string
+---@field end_date? string
+---@field gamerpower_url? string
+---@field id? number
+---@field image? string
+---@field instruction? string
+---@field open_giveaway? string
+---@field open_giveaway_url? string
+---@field platform? string
+---@field published_date? string
+---@field status? string
+---@field thumbnail? string
+---@field title? string
+---@field type? string
+---@field user? number
+---@field worth? string
 
 ---@class Worth
 ---@field active_giveaways_number? number
 ---@field worth_estimation_usd? string
 
 ---@class WorthLoadMatch
+---@field active_giveaways_number? number
+---@field worth_estimation_usd? string
 
 local M = {}
 

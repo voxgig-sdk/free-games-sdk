@@ -33,13 +33,13 @@ class Giveaway
     public ?string $worth = null;
 }
 
-/** Match filter for Giveaway#load (any subset of Giveaway fields). */
+/** Request payload for Giveaway#load. */
 class GiveawayLoadMatch
 {
     public ?string $description = null;
     public ?string $end_date = null;
     public ?string $gamerpower_url = null;
-    public ?int $id = null;
+    public int $id;
     public ?string $image = null;
     public ?string $instruction = null;
     public ?string $open_giveaway = null;
@@ -54,7 +54,7 @@ class GiveawayLoadMatch
     public ?string $worth = null;
 }
 
-/** Match filter for Giveaway#list (any subset of Giveaway fields). */
+/** Request payload for Giveaway#list. */
 class GiveawayListMatch
 {
     public ?string $description = null;
@@ -82,7 +82,7 @@ class Worth
     public ?string $worth_estimation_usd = null;
 }
 
-/** Match filter for Worth#load (any subset of Worth fields). */
+/** Request payload for Worth#load. */
 class WorthLoadMatch
 {
     public ?int $active_giveaways_number = null;

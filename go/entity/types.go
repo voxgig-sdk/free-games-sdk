@@ -28,13 +28,12 @@ type Giveaway struct {
 	Worth *string `json:"worth,omitempty"`
 }
 
-// GiveawayLoadMatch mirrors the giveaway fields as an all-optional match
-// filter (Go analog of Partial<Giveaway>).
+// GiveawayLoadMatch is the typed request payload for Giveaway.LoadTyped.
 type GiveawayLoadMatch struct {
 	Description *string `json:"description,omitempty"`
 	EndDate *string `json:"end_date,omitempty"`
 	GamerpowerUrl *string `json:"gamerpower_url,omitempty"`
-	Id *int `json:"id,omitempty"`
+	Id int `json:"id"`
 	Image *string `json:"image,omitempty"`
 	Instruction *string `json:"instruction,omitempty"`
 	OpenGiveaway *string `json:"open_giveaway,omitempty"`
@@ -49,8 +48,7 @@ type GiveawayLoadMatch struct {
 	Worth *string `json:"worth,omitempty"`
 }
 
-// GiveawayListMatch mirrors the giveaway fields as an all-optional match
-// filter (Go analog of Partial<Giveaway>).
+// GiveawayListMatch is the typed request payload for Giveaway.ListTyped.
 type GiveawayListMatch struct {
 	Description *string `json:"description,omitempty"`
 	EndDate *string `json:"end_date,omitempty"`
@@ -76,8 +74,7 @@ type Worth struct {
 	WorthEstimationUsd *string `json:"worth_estimation_usd,omitempty"`
 }
 
-// WorthLoadMatch mirrors the worth fields as an all-optional match
-// filter (Go analog of Partial<Worth>).
+// WorthLoadMatch is the typed request payload for Worth.LoadTyped.
 type WorthLoadMatch struct {
 	ActiveGiveawaysNumber *int `json:"active_giveaways_number,omitempty"`
 	WorthEstimationUsd *string `json:"worth_estimation_usd,omitempty"`

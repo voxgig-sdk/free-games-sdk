@@ -8,7 +8,7 @@ Complete API reference for the FreeGames PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/free-games_sdk.php';
+require_once __DIR__ . '/freegames_sdk.php';
 
 $client = new FreeGamesSDK($options);
 ```
@@ -49,11 +49,11 @@ Create a new `GiveawayEntity` instance. Pass `null` for no initial data.
 
 Create a new `WorthEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): FreeGamesUtility`
 
 Return a copy of the SDK utility object.
 
@@ -96,31 +96,31 @@ $giveaway = $client->Giveaway();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `end_date` | ``$STRING`` | No |  |
-| `gamerpower_url` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `instruction` | ``$STRING`` | No |  |
-| `open_giveaway` | ``$STRING`` | No |  |
-| `open_giveaway_url` | ``$STRING`` | No |  |
-| `platform` | ``$STRING`` | No |  |
-| `published_date` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `thumbnail` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `user` | ``$INTEGER`` | No |  |
-| `worth` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `end_date` | `string` | No |  |
+| `gamerpower_url` | `string` | No |  |
+| `id` | `int` | No |  |
+| `image` | `string` | No |  |
+| `instruction` | `string` | No |  |
+| `open_giveaway` | `string` | No |  |
+| `open_giveaway_url` | `string` | No |  |
+| `platform` | `string` | No |  |
+| `published_date` | `string` | No |  |
+| `status` | `string` | No |  |
+| `thumbnail` | `string` | No |  |
+| `title` | `string` | No |  |
+| `type` | `string` | No |  |
+| `user` | `int` | No |  |
+| `worth` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Giveaway()->list([]);
+$results = $client->Giveaway()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -133,19 +133,19 @@ $result = $client->Giveaway()->load(["id" => "giveaway_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -154,7 +154,7 @@ Set the entity match criteria.
 Create a new `GiveawayEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -171,8 +171,8 @@ $worth = $client->Worth();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_giveaways_number` | ``$INTEGER`` | No |  |
-| `worth_estimation_usd` | ``$STRING`` | No |  |
+| `active_giveaways_number` | `int` | No |  |
+| `worth_estimation_usd` | `string` | No |  |
 
 ### Operations
 
@@ -181,24 +181,24 @@ $worth = $client->Worth();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Worth()->load(["id" => "worth_id"]);
+$result = $client->Worth()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -207,7 +207,7 @@ Set the entity match criteria.
 Create a new `WorthEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

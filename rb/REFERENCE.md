@@ -8,7 +8,7 @@ Complete API reference for the FreeGames Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'free-games_sdk'
+require_relative 'FreeGames_sdk'
 
 client = FreeGamesSDK.new(options)
 ```
@@ -97,31 +97,31 @@ giveaway = client.Giveaway
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `end_date` | ``$STRING`` | No |  |
-| `gamerpower_url` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `instruction` | ``$STRING`` | No |  |
-| `open_giveaway` | ``$STRING`` | No |  |
-| `open_giveaway_url` | ``$STRING`` | No |  |
-| `platform` | ``$STRING`` | No |  |
-| `published_date` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `thumbnail` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `user` | ``$INTEGER`` | No |  |
-| `worth` | ``$STRING`` | No |  |
+| `description` | `String` | No |  |
+| `end_date` | `String` | No |  |
+| `gamerpower_url` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `image` | `String` | No |  |
+| `instruction` | `String` | No |  |
+| `open_giveaway` | `String` | No |  |
+| `open_giveaway_url` | `String` | No |  |
+| `platform` | `String` | No |  |
+| `published_date` | `String` | No |  |
+| `status` | `String` | No |  |
+| `thumbnail` | `String` | No |  |
+| `title` | `String` | No |  |
+| `type` | `String` | No |  |
+| `user` | `Integer` | No |  |
+| `worth` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Giveaway.list(nil)
+results = client.Giveaway.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -172,8 +172,8 @@ worth = client.Worth
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_giveaways_number` | ``$INTEGER`` | No |  |
-| `worth_estimation_usd` | ``$STRING`` | No |  |
+| `active_giveaways_number` | `Integer` | No |  |
+| `worth_estimation_usd` | `String` | No |  |
 
 ### Operations
 
@@ -182,7 +182,7 @@ worth = client.Worth
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Worth.load({ "id" => "worth_id" })
+result = client.Worth.load()
 ```
 
 ### Common Methods

@@ -221,13 +221,13 @@ class FreeGamesSDK:
 
 
     def Giveaway(self, data=None) -> "GiveawayEntity":
-        """Entity factory: client.Giveaway().list({}) / client.Giveaway().load({"id": ...})."""
+        """Entity factory: client.Giveaway().list() / client.Giveaway().load({"id": ...})."""
         from entity.giveaway_entity import GiveawayEntity
         return GiveawayEntity(self, data)
 
 
     def Worth(self, data=None) -> "WorthEntity":
-        """Entity factory: client.Worth().list({}) / client.Worth().load({"id": ...})."""
+        """Entity factory: client.Worth().list() / client.Worth().load({"id": ...})."""
         from entity.worth_entity import WorthEntity
         return WorthEntity(self, data)
 

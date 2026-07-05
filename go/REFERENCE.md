@@ -101,22 +101,22 @@ giveaway := client.Giveaway(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `end_date` | ``$STRING`` | No |  |
-| `gamerpower_url` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `instruction` | ``$STRING`` | No |  |
-| `open_giveaway` | ``$STRING`` | No |  |
-| `open_giveaway_url` | ``$STRING`` | No |  |
-| `platform` | ``$STRING`` | No |  |
-| `published_date` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `thumbnail` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `user` | ``$INTEGER`` | No |  |
-| `worth` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `end_date` | `string` | No |  |
+| `gamerpower_url` | `string` | No |  |
+| `id` | `int` | No |  |
+| `image` | `string` | No |  |
+| `instruction` | `string` | No |  |
+| `open_giveaway` | `string` | No |  |
+| `open_giveaway_url` | `string` | No |  |
+| `platform` | `string` | No |  |
+| `published_date` | `string` | No |  |
+| `status` | `string` | No |  |
+| `thumbnail` | `string` | No |  |
+| `title` | `string` | No |  |
+| `type` | `string` | No |  |
+| `user` | `int` | No |  |
+| `worth` | `string` | No |  |
 
 ### Operations
 
@@ -170,8 +170,8 @@ worth := client.Worth(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_giveaways_number` | ``$INTEGER`` | No |  |
-| `worth_estimation_usd` | ``$STRING`` | No |  |
+| `active_giveaways_number` | `int` | No |  |
+| `worth_estimation_usd` | `string` | No |  |
 
 ### Operations
 
@@ -180,7 +180,7 @@ worth := client.Worth(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Worth(nil).Load(map[string]any{"id": "worth_id"}, nil)
+result, err := client.Worth(nil).Load(nil, nil)
 ```
 
 ### Common Methods

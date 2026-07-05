@@ -77,7 +77,7 @@ Giveaway = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Giveaway#load (any subset of Giveaway fields).
+# Request payload for Giveaway#load.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -89,7 +89,7 @@ Giveaway = Struct.new(
 #   @return [String, nil]
 #
 # @!attribute [rw] id
-#   @return [Integer, nil]
+#   @return [Integer]
 #
 # @!attribute [rw] image
 #   @return [String, nil]
@@ -146,7 +146,7 @@ GiveawayLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Giveaway#list (any subset of Giveaway fields).
+# Request payload for Giveaway#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -228,7 +228,7 @@ Worth = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Worth#load (any subset of Worth fields).
+# Request payload for Worth#load.
 #
 # @!attribute [rw] active_giveaways_number
 #   @return [Integer, nil]

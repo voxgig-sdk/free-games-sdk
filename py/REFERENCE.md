@@ -8,7 +8,7 @@ Complete API reference for the FreeGames Python SDK.
 ### Constructor
 
 ```python
-from free-games_sdk import FreeGamesSDK
+from freegames_sdk import FreeGamesSDK
 
 client = FreeGamesSDK(options)
 ```
@@ -91,31 +91,31 @@ giveaway = client.Giveaway()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `end_date` | ``$STRING`` | No |  |
-| `gamerpower_url` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `instruction` | ``$STRING`` | No |  |
-| `open_giveaway` | ``$STRING`` | No |  |
-| `open_giveaway_url` | ``$STRING`` | No |  |
-| `platform` | ``$STRING`` | No |  |
-| `published_date` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `thumbnail` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `user` | ``$INTEGER`` | No |  |
-| `worth` | ``$STRING`` | No |  |
+| `description` | `str` | No |  |
+| `end_date` | `str` | No |  |
+| `gamerpower_url` | `str` | No |  |
+| `id` | `int` | No |  |
+| `image` | `str` | No |  |
+| `instruction` | `str` | No |  |
+| `open_giveaway` | `str` | No |  |
+| `open_giveaway_url` | `str` | No |  |
+| `platform` | `str` | No |  |
+| `published_date` | `str` | No |  |
+| `status` | `str` | No |  |
+| `thumbnail` | `str` | No |  |
+| `title` | `str` | No |  |
+| `type` | `str` | No |  |
+| `user` | `int` | No |  |
+| `worth` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Giveaway().list({})
+results = client.Giveaway().list()
 for giveaway in results:
     print(giveaway)
 ```
@@ -167,8 +167,8 @@ worth = client.Worth()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_giveaways_number` | ``$INTEGER`` | No |  |
-| `worth_estimation_usd` | ``$STRING`` | No |  |
+| `active_giveaways_number` | `int` | No |  |
+| `worth_estimation_usd` | `str` | No |  |
 
 ### Operations
 
@@ -177,7 +177,7 @@ worth = client.Worth()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Worth().load({"id": "worth_id"})
+result = client.Worth().load()
 ```
 
 ### Common Methods

@@ -35,11 +35,14 @@ class Giveaway(TypedDict, total=False):
     worth: str
 
 
-class GiveawayLoadMatch(TypedDict, total=False):
+class GiveawayLoadMatchRequired(TypedDict):
+    id: int
+
+
+class GiveawayLoadMatch(GiveawayLoadMatchRequired, total=False):
     description: str
     end_date: str
     gamerpower_url: str
-    id: int
     image: str
     instruction: str
     open_giveaway: str

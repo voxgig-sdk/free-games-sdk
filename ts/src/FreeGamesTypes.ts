@@ -24,14 +24,51 @@ export interface Giveaway {
   worth?: string
 }
 
-export type GiveawayLoadMatch = Partial<Giveaway>
+export interface GiveawayLoadMatch {
+  description?: string
+  end_date?: string
+  gamerpower_url?: string
+  id: number
+  image?: string
+  instruction?: string
+  open_giveaway?: string
+  open_giveaway_url?: string
+  platform?: string
+  published_date?: string
+  status?: string
+  thumbnail?: string
+  title?: string
+  type?: string
+  user?: number
+  worth?: string
+}
 
-export type GiveawayListMatch = Partial<Giveaway>
+export interface GiveawayListMatch {
+  description?: string
+  end_date?: string
+  gamerpower_url?: string
+  id?: number
+  image?: string
+  instruction?: string
+  open_giveaway?: string
+  open_giveaway_url?: string
+  platform?: string
+  published_date?: string
+  status?: string
+  thumbnail?: string
+  title?: string
+  type?: string
+  user?: number
+  worth?: string
+}
 
 export interface Worth {
   active_giveaways_number?: number
   worth_estimation_usd?: string
 }
 
-export type WorthLoadMatch = Partial<Worth>
+export interface WorthLoadMatch {
+  active_giveaways_number?: number
+  worth_estimation_usd?: string
+}
 

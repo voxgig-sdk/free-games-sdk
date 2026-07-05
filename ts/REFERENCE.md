@@ -128,22 +128,22 @@ const giveaway = client.Giveaway()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `end_date` | ``$STRING`` | No |  |
-| `gamerpower_url` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `instruction` | ``$STRING`` | No |  |
-| `open_giveaway` | ``$STRING`` | No |  |
-| `open_giveaway_url` | ``$STRING`` | No |  |
-| `platform` | ``$STRING`` | No |  |
-| `published_date` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `thumbnail` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `user` | ``$INTEGER`` | No |  |
-| `worth` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `end_date` | `string` | No |  |
+| `gamerpower_url` | `string` | No |  |
+| `id` | `number` | No |  |
+| `image` | `string` | No |  |
+| `instruction` | `string` | No |  |
+| `open_giveaway` | `string` | No |  |
+| `open_giveaway_url` | `string` | No |  |
+| `platform` | `string` | No |  |
+| `published_date` | `string` | No |  |
+| `status` | `string` | No |  |
+| `thumbnail` | `string` | No |  |
+| `title` | `string` | No |  |
+| `type` | `string` | No |  |
+| `user` | `number` | No |  |
+| `worth` | `string` | No |  |
 
 ### Operations
 
@@ -160,7 +160,7 @@ const results = await client.Giveaway().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Giveaway().load({ id: 'giveaway_id' })
+const result = await client.Giveaway().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -201,8 +201,8 @@ const worth = client.Worth()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_giveaways_number` | ``$INTEGER`` | No |  |
-| `worth_estimation_usd` | ``$STRING`` | No |  |
+| `active_giveaways_number` | `number` | No |  |
+| `worth_estimation_usd` | `string` | No |  |
 
 ### Operations
 
@@ -211,7 +211,7 @@ const worth = client.Worth()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Worth().load({ id: 'worth_id' })
+const result = await client.Worth().load()
 ```
 
 ### Common Methods
