@@ -95,6 +95,7 @@ same parameters as `Direct()`.
 
 ```go
 giveaway := client.Giveaway(nil)
+fmt.Println(giveaway.GetName()) // "giveaway"
 ```
 
 ### Fields
@@ -126,6 +127,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Giveaway(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -133,7 +138,11 @@ results, err := client.Giveaway(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Giveaway(nil).Load(map[string]any{"id": "giveaway_id"}, nil)
+result, err := client.Giveaway(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -164,6 +173,7 @@ Return the entity name.
 
 ```go
 worth := client.Worth(nil)
+fmt.Println(worth.GetName()) // "worth"
 ```
 
 ### Fields
@@ -181,6 +191,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Worth(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

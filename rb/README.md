@@ -49,7 +49,7 @@ end
 ```ruby
 begin
   # load returns the bare Giveaway record (raises on error).
-  giveaway = client.Giveaway.load({ "id" => "example_id" })
+  giveaway = client.Giveaway.load({ "id" => 1 })
   puts giveaway
 rescue => err
   warn "load failed: #{err}"
@@ -326,7 +326,7 @@ Create an instance: `giveaway = client.Giveaway`
 
 ```ruby
 # load returns the bare Giveaway record (raises on error).
-giveaway = client.Giveaway.load({ "id" => "giveaway_id" })
+giveaway = client.Giveaway.load({ "id" => 1 })
 ```
 
 #### Example: List

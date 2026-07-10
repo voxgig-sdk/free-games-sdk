@@ -342,7 +342,7 @@ Create an instance: `giveaway := client.Giveaway(nil)`
 #### Example: Load
 
 ```go
-giveaway, err := client.Giveaway(nil).Load(map[string]any{"id": "giveaway_id"}, nil)
+giveaway, err := client.Giveaway(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }

@@ -56,7 +56,7 @@ except Exception as err:
 
 ```python
 try:
-    giveaway = client.Giveaway().load({"id": "example_id"})
+    giveaway = client.Giveaway().load({"id": 1})
     print(giveaway)
 except Exception as err:
     print(f"load failed: {err}")
@@ -328,7 +328,7 @@ Create an instance: `giveaway = client.Giveaway()`
 #### Example: Load
 
 ```python
-giveaway = client.Giveaway().load({"id": "giveaway_id"})
+giveaway = client.Giveaway().load({"id": 1})
 ```
 
 #### Example: List

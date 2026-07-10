@@ -50,7 +50,7 @@ try {
 ```php
 try {
     // load() returns the bare Giveaway record (throws on error).
-    $giveaway = $client->Giveaway()->load(["id" => "example_id"]);
+    $giveaway = $client->Giveaway()->load(["id" => 1]);
     print_r($giveaway);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -336,7 +336,7 @@ Create an instance: `$giveaway = $client->Giveaway();`
 
 ```php
 // load() returns the bare Giveaway record (throws on error).
-$giveaway = $client->Giveaway()->load(["id" => "giveaway_id"]);
+$giveaway = $client->Giveaway()->load(["id" => 1]);
 ```
 
 #### Example: List

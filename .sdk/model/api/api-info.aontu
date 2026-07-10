@@ -16,9 +16,9 @@ main: {
           url: "https://www.gamerpower.com/api"
         }
       ]
+      summary: "The GamerPower API provides access to a vast collection of free games, in-game loot, and ongoing giveaways without any restrictions or the need for authentication."
       title: "Free Games API"
       version: "1.0.0"
+      website: "https://gamerpower.com"
     }
   }
-}
-

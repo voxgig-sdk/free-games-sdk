@@ -50,7 +50,7 @@ end
 ### 3. Load a giveaway
 
 ```lua
-local giveaway, err = client:Giveaway():load({ id = "example_id" })
+local giveaway, err = client:Giveaway():load({ id = 1 })
 if err then error(err) end
 print(giveaway)
 ```
@@ -314,7 +314,7 @@ Create an instance: `local giveaway = client:Giveaway(nil)`
 #### Example: Load
 
 ```lua
-local giveaway, err = client:Giveaway():load({ id = "giveaway_id" })
+local giveaway, err = client:Giveaway():load({ id = 1 })
 ```
 
 #### Example: List

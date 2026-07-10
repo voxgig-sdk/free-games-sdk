@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -511,14 +508,17 @@
           "url": "https://www.gamerpower.com/api-read"
         },
         "description": "The GamerPower API provides access to a vast collection of free games, in-game loot, and ongoing giveaways without any restrictions or the need for authentication. Users can retrieve giveaway data through simple HTTP GET requests, making integration easy and seamless for developers and gamers alike.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://www.gamerpower.com/api"
           }
         ],
+        "summary": "The GamerPower API provides access to a vast collection of free games, in-game loot, and ongoing giveaways without any restrictions or the need for authentication.",
         "title": "Free Games API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://gamerpower.com"
       },
       "option": {},
       "target": {
@@ -571,6 +571,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -621,6 +624,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

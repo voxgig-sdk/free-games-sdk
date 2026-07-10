@@ -128,7 +128,7 @@ $results = $client->Giveaway()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Giveaway()->load(["id" => "giveaway_id"]);
+$result = $client->Giveaway()->load(["id" => 1]);
 ```
 
 ### Common Methods
