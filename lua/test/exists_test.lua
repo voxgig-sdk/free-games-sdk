@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- FreeGames SDK exists test
 
 local sdk = require("free-games_sdk")
 
