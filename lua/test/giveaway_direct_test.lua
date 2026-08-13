@@ -105,11 +105,11 @@ function giveaway_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["FREEGAMES_TEST_GIVEAWAY_ENTID"] = {},
-    ["FREEGAMES_TEST_LIVE"] = "FALSE",
+    ["FREE_GAMES_TEST_GIVEAWAY_ENTID"] = {},
+    ["FREE_GAMES_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["FREEGAMES_TEST_LIVE"] == "TRUE"
+  local live = env["FREE_GAMES_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

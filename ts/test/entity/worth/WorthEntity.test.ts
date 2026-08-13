@@ -26,8 +26,8 @@ import {
 describe('WorthEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FREEGAMES_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FREEGAMES_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FREE_GAMES_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FREE_GAMES_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = FreeGamesSDK.test()
@@ -62,7 +62,7 @@ describe('WorthEntity', async () => {
     // LOAD
     const worth_ref01_ent = client.Worth()
     const worth_ref01_match_dt0: any = {}
-    const worth_ref01_data_dt0 = await worth_ref01_ent.load(worth_ref01_match_dt0)
+    const worth_ref01_data_dt0 = (await worth_ref01_ent.load(worth_ref01_match_dt0)).data()
     assert(null != worth_ref01_data_dt0)
 
 

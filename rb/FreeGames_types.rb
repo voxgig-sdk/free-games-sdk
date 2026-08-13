@@ -25,7 +25,7 @@
 # @!attribute [rw] image
 #   @return [String, nil]
 #
-# @!attribute [rw] instruction
+# @!attribute [rw] instructions
 #   @return [String, nil]
 #
 # @!attribute [rw] open_giveaway
@@ -34,7 +34,7 @@
 # @!attribute [rw] open_giveaway_url
 #   @return [String, nil]
 #
-# @!attribute [rw] platform
+# @!attribute [rw] platforms
 #   @return [String, nil]
 #
 # @!attribute [rw] published_date
@@ -52,7 +52,7 @@
 # @!attribute [rw] type
 #   @return [String, nil]
 #
-# @!attribute [rw] user
+# @!attribute [rw] users
 #   @return [Integer, nil]
 #
 # @!attribute [rw] worth
@@ -63,16 +63,16 @@ Giveaway = Struct.new(
   :gamerpower_url,
   :id,
   :image,
-  :instruction,
+  :instructions,
   :open_giveaway,
   :open_giveaway_url,
-  :platform,
+  :platforms,
   :published_date,
   :status,
   :thumbnail,
   :title,
   :type,
-  :user,
+  :users,
   :worth,
   keyword_init: true
 )
@@ -94,7 +94,7 @@ Giveaway = Struct.new(
 # @!attribute [rw] image
 #   @return [String, nil]
 #
-# @!attribute [rw] instruction
+# @!attribute [rw] instructions
 #   @return [String, nil]
 #
 # @!attribute [rw] open_giveaway
@@ -103,7 +103,7 @@ Giveaway = Struct.new(
 # @!attribute [rw] open_giveaway_url
 #   @return [String, nil]
 #
-# @!attribute [rw] platform
+# @!attribute [rw] platforms
 #   @return [String, nil]
 #
 # @!attribute [rw] published_date
@@ -121,7 +121,7 @@ Giveaway = Struct.new(
 # @!attribute [rw] type
 #   @return [String, nil]
 #
-# @!attribute [rw] user
+# @!attribute [rw] users
 #   @return [Integer, nil]
 #
 # @!attribute [rw] worth
@@ -132,16 +132,16 @@ GiveawayLoadMatch = Struct.new(
   :gamerpower_url,
   :id,
   :image,
-  :instruction,
+  :instructions,
   :open_giveaway,
   :open_giveaway_url,
-  :platform,
+  :platforms,
   :published_date,
   :status,
   :thumbnail,
   :title,
   :type,
-  :user,
+  :users,
   :worth,
   keyword_init: true
 )
@@ -163,7 +163,7 @@ GiveawayLoadMatch = Struct.new(
 # @!attribute [rw] image
 #   @return [String, nil]
 #
-# @!attribute [rw] instruction
+# @!attribute [rw] instructions
 #   @return [String, nil]
 #
 # @!attribute [rw] open_giveaway
@@ -172,7 +172,7 @@ GiveawayLoadMatch = Struct.new(
 # @!attribute [rw] open_giveaway_url
 #   @return [String, nil]
 #
-# @!attribute [rw] platform
+# @!attribute [rw] platforms
 #   @return [String, nil]
 #
 # @!attribute [rw] published_date
@@ -190,7 +190,7 @@ GiveawayLoadMatch = Struct.new(
 # @!attribute [rw] type
 #   @return [String, nil]
 #
-# @!attribute [rw] user
+# @!attribute [rw] users
 #   @return [Integer, nil]
 #
 # @!attribute [rw] worth
@@ -201,16 +201,16 @@ GiveawayListMatch = Struct.new(
   :gamerpower_url,
   :id,
   :image,
-  :instruction,
+  :instructions,
   :open_giveaway,
   :open_giveaway_url,
-  :platform,
+  :platforms,
   :published_date,
   :status,
   :thumbnail,
   :title,
   :type,
-  :user,
+  :users,
   :worth,
   keyword_init: true
 )

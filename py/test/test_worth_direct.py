@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from freegames_sdk.utility.voxgig_struct import voxgig_struct as vs
 from freegames_sdk import FreeGamesSDK
-from core import helpers
+from freegames_sdk.core import helpers
 from test import runner
 
 
@@ -56,11 +56,11 @@ def _worth_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "FREEGAMES_TEST_WORTH_ENTID": {},
-        "FREEGAMES_TEST_LIVE": "FALSE",
+        "FREE_GAMES_TEST_WORTH_ENTID": {},
+        "FREE_GAMES_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("FREEGAMES_TEST_LIVE") == "TRUE"
+    live = env.get("FREE_GAMES_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

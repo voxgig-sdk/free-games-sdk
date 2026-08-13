@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = FreeGamesSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = FreeGamesSDK.test({
+  entity: {
+    giveaway: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const giveaways = await client.Giveaway().list()
-// giveaways is an array of bare Giveaway records populated with mock data
+// giveaways is an array of Giveaway entities, populated with mock data
+// — call giveaways[0].data() for the record itself
 console.log(giveaways)
 ```
 
@@ -110,7 +119,7 @@ import { FreeGamesSDK } from '@voxgig-sdk/free-games'
 
 const client = new FreeGamesSDK()
 
-// List all giveaways (returns Giveaway[])
+// List all giveaways (returns GiveawayEntity[] — .data() for the record)
 const giveaways = await client.Giveaway().list()
 for (const giveaway of giveaways) {
   console.log(giveaway)
@@ -192,7 +201,7 @@ $client = new FreeGamesSDK();
 $giveaways = $client->Giveaway()->list();
 print_r($giveaways);
 
-// Load a specific giveaway (returns the bare record; throws on error)
+// Load a specific giveaway (returns the ENTITY; call data_get() for the record; throws on error)
 $giveaway = $client->Giveaway()->load(["id" => 1]);
 print_r($giveaway);
 ```
@@ -223,7 +232,7 @@ client = FreeGamesSDK.new
 giveaways = client.Giveaway.list
 puts giveaways
 
-# Load a specific giveaway (returns the bare record; raises on error)
+# Load a specific giveaway (returns the ENTITY; call data_get for the record)
 giveaway = client.Giveaway.load({ "id" => 1 })
 puts giveaway
 ```
@@ -360,6 +369,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.gamerpower.com/api-read](https://www.gamerpower.com/api-read)
 

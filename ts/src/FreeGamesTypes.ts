@@ -11,16 +11,16 @@ export interface Giveaway {
   gamerpower_url?: string
   id?: number
   image?: string
-  instruction?: string
+  instructions?: string
   open_giveaway?: string
   open_giveaway_url?: string
-  platform?: string
+  platforms?: string
   published_date?: string
   status?: string
   thumbnail?: string
   title?: string
   type?: string
-  user?: number
+  users?: number
   worth?: string
 }
 
@@ -30,16 +30,16 @@ export interface GiveawayLoadMatch {
   gamerpower_url?: string
   id: number
   image?: string
-  instruction?: string
+  instructions?: string
   open_giveaway?: string
   open_giveaway_url?: string
-  platform?: string
+  platforms?: string
   published_date?: string
   status?: string
   thumbnail?: string
   title?: string
   type?: string
-  user?: number
+  users?: number
   worth?: string
 }
 
@@ -49,16 +49,16 @@ export interface GiveawayListMatch {
   gamerpower_url?: string
   id?: number
   image?: string
-  instruction?: string
+  instructions?: string
   open_giveaway?: string
   open_giveaway_url?: string
-  platform?: string
+  platforms?: string
   published_date?: string
   status?: string
   thumbnail?: string
   title?: string
   type?: string
-  user?: number
+  users?: number
   worth?: string
 }
 

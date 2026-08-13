@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Giveaway record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Giveaway record (throws on error).
     $giveaway = $client->Giveaway()->load(["id" => 1]);
     print_r($giveaway);
 } catch (\Throwable $err) {
@@ -140,7 +140,8 @@ $client = FreeGamesSDK::test([
     "entity" => ["giveaway" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $giveaway = $client->Giveaway()->list();
 print_r($giveaway);
 ```
@@ -241,7 +242,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -268,16 +269,16 @@ On error, `ok` is `false` and `$err` contains the error value.
 | `gamerpower_url` |  |
 | `id` |  |
 | `image` |  |
-| `instruction` |  |
+| `instructions` |  |
 | `open_giveaway` |  |
 | `open_giveaway_url` |  |
-| `platform` |  |
+| `platforms` |  |
 | `published_date` |  |
 | `status` |  |
 | `thumbnail` |  |
 | `title` |  |
 | `type` |  |
-| `user` |  |
+| `users` |  |
 | `worth` |  |
 
 Operations: List, Load.
@@ -320,22 +321,22 @@ Create an instance: `$giveaway = $client->Giveaway();`
 | `gamerpower_url` | `string` |  |
 | `id` | `int` |  |
 | `image` | `string` |  |
-| `instruction` | `string` |  |
+| `instructions` | `string` |  |
 | `open_giveaway` | `string` |  |
 | `open_giveaway_url` | `string` |  |
-| `platform` | `string` |  |
+| `platforms` | `string` |  |
 | `published_date` | `string` |  |
 | `status` | `string` |  |
 | `thumbnail` | `string` |  |
 | `title` | `string` |  |
 | `type` | `string` |  |
-| `user` | `int` |  |
+| `users` | `int` |  |
 | `worth` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Giveaway record (throws on error).
+// load() returns the ENTITY — call data_get() for the Giveaway record (throws on error).
 $giveaway = $client->Giveaway()->load(["id" => 1]);
 ```
 
@@ -367,7 +368,7 @@ Create an instance: `$worth = $client->Worth();`
 #### Example: Load
 
 ```php
-// load() returns the bare Worth record (throws on error).
+// load() returns the ENTITY — call data_get() for the Worth record (throws on error).
 $worth = $client->Worth()->load();
 ```
 

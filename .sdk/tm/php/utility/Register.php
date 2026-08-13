@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ FreeGamesUtility::setRegistrar(function (FreeGamesUtility $u): void {
     $u->prepare_params = [FreeGamesPrepareParams::class, 'call'];
     $u->prepare_path = [FreeGamesPreparePath::class, 'call'];
     $u->prepare_query = [FreeGamesPrepareQuery::class, 'call'];
+    $u->graphql_body = [FreeGamesGraphql::class, 'body'];
+    $u->graphql_errors = [FreeGamesGraphql::class, 'errors'];
     $u->result_basic = [FreeGamesResultBasic::class, 'call'];
     $u->result_body = [FreeGamesResultBody::class, 'call'];
     $u->result_headers = [FreeGamesResultHeaders::class, 'call'];

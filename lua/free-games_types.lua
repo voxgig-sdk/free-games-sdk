@@ -12,16 +12,16 @@
 ---@field gamerpower_url? string
 ---@field id? number
 ---@field image? string
----@field instruction? string
+---@field instructions? string
 ---@field open_giveaway? string
 ---@field open_giveaway_url? string
----@field platform? string
+---@field platforms? string
 ---@field published_date? string
 ---@field status? string
 ---@field thumbnail? string
 ---@field title? string
 ---@field type? string
----@field user? number
+---@field users? number
 ---@field worth? string
 
 ---@class GiveawayLoadMatch
@@ -30,16 +30,16 @@
 ---@field gamerpower_url? string
 ---@field id number
 ---@field image? string
----@field instruction? string
+---@field instructions? string
 ---@field open_giveaway? string
 ---@field open_giveaway_url? string
----@field platform? string
+---@field platforms? string
 ---@field published_date? string
 ---@field status? string
 ---@field thumbnail? string
 ---@field title? string
 ---@field type? string
----@field user? number
+---@field users? number
 ---@field worth? string
 
 ---@class GiveawayListMatch
@@ -48,16 +48,16 @@
 ---@field gamerpower_url? string
 ---@field id? number
 ---@field image? string
----@field instruction? string
+---@field instructions? string
 ---@field open_giveaway? string
 ---@field open_giveaway_url? string
----@field platform? string
+---@field platforms? string
 ---@field published_date? string
 ---@field status? string
 ---@field thumbnail? string
 ---@field title? string
 ---@field type? string
----@field user? number
+---@field users? number
 ---@field worth? string
 
 ---@class Worth

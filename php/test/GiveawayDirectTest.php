@@ -111,11 +111,11 @@ function giveaway_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "FREEGAMES_TEST_GIVEAWAY_ENTID" => [],
-        "FREEGAMES_TEST_LIVE" => "FALSE",
+        "FREE_GAMES_TEST_GIVEAWAY_ENTID" => [],
+        "FREE_GAMES_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["FREEGAMES_TEST_LIVE"] === "TRUE";
+    $live = $env["FREE_GAMES_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

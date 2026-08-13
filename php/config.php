@@ -68,7 +68,7 @@ class FreeGamesConfig
             ],
             [
               'active' => true,
-              'name' => 'instruction',
+              'name' => 'instructions',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 5,
@@ -89,7 +89,7 @@ class FreeGamesConfig
             ],
             [
               'active' => true,
-              'name' => 'platform',
+              'name' => 'platforms',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 8,
@@ -131,7 +131,7 @@ class FreeGamesConfig
             ],
             [
               'active' => true,
-              'name' => 'user',
+              'name' => 'users',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 14,
@@ -180,6 +180,7 @@ class FreeGamesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/giveaways',
                   'parts' => [
@@ -220,6 +221,7 @@ class FreeGamesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/filter',
                   'parts' => [
@@ -258,6 +260,7 @@ class FreeGamesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/giveaway',
                   'parts' => [
@@ -327,6 +330,7 @@ class FreeGamesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/worth',
                   'parts' => [

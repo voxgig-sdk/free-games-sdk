@@ -26,8 +26,8 @@ import {
 describe('GiveawayEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FREEGAMES_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FREEGAMES_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FREE_GAMES_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FREE_GAMES_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = FreeGamesSDK.test()
@@ -63,13 +63,13 @@ describe('GiveawayEntity', async () => {
     const giveaway_ref01_ent = client.Giveaway()
     const giveaway_ref01_match: any = {}
 
-    const giveaway_ref01_list = await giveaway_ref01_ent.list(giveaway_ref01_match)
+    const giveaway_ref01_list = (await giveaway_ref01_ent.list(giveaway_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const giveaway_ref01_match_dt0: any = {}
     giveaway_ref01_match_dt0.id = giveaway_ref01_data.id
-    const giveaway_ref01_data_dt0 = await giveaway_ref01_ent.load(giveaway_ref01_match_dt0)
+    const giveaway_ref01_data_dt0 = (await giveaway_ref01_ent.load(giveaway_ref01_match_dt0)).data()
     assert(giveaway_ref01_data_dt0.id === giveaway_ref01_data.id)
 
 

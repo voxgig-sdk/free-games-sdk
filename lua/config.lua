@@ -62,7 +62,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "instruction",
+            ["name"] = "instructions",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 5,
@@ -83,7 +83,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "platform",
+            ["name"] = "platforms",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 8,
@@ -125,7 +125,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "user",
+            ["name"] = "users",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 14,
@@ -174,6 +174,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/giveaways",
                 ["parts"] = {
@@ -214,6 +215,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/filter",
                 ["parts"] = {
@@ -252,6 +254,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/giveaway",
                 ["parts"] = {
@@ -321,6 +324,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/worth",
                 ["parts"] = {

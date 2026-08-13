@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ FreeGamesUtility.registrar = ->(u) {
   u.prepare_params = FreeGamesUtilities::PrepareParams
   u.prepare_path = FreeGamesUtilities::PreparePath
   u.prepare_query = FreeGamesUtilities::PrepareQuery
+  u.graphql_body = FreeGamesUtilities::GraphqlBody
+  u.graphql_errors = FreeGamesUtilities::GraphqlErrors
   u.result_basic = FreeGamesUtilities::ResultBasic
   u.result_body = FreeGamesUtilities::ResultBody
   u.result_headers = FreeGamesUtilities::ResultHeaders

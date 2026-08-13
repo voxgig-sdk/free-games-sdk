@@ -59,11 +59,11 @@ def worth_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "FREEGAMES_TEST_WORTH_ENTID" => {},
-    "FREEGAMES_TEST_LIVE" => "FALSE",
+    "FREE_GAMES_TEST_WORTH_ENTID" => {},
+    "FREE_GAMES_TEST_LIVE" => "FALSE",
   })
 
-  live = env["FREEGAMES_TEST_LIVE"] == "TRUE"
+  live = env["FREE_GAMES_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

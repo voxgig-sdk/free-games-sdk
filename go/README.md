@@ -275,16 +275,16 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | `"gamerpower_url"` |  |
 | `"id"` |  |
 | `"image"` |  |
-| `"instruction"` |  |
+| `"instructions"` |  |
 | `"open_giveaway"` |  |
 | `"open_giveaway_url"` |  |
-| `"platform"` |  |
+| `"platforms"` |  |
 | `"published_date"` |  |
 | `"status"` |  |
 | `"thumbnail"` |  |
 | `"title"` |  |
 | `"type"` |  |
-| `"user"` |  |
+| `"users"` |  |
 | `"worth"` |  |
 
 Operations: List, Load.
@@ -327,16 +327,16 @@ Create an instance: `giveaway := client.Giveaway(nil)`
 | `gamerpower_url` | `string` |  |
 | `id` | `int` |  |
 | `image` | `string` |  |
-| `instruction` | `string` |  |
+| `instructions` | `string` |  |
 | `open_giveaway` | `string` |  |
 | `open_giveaway_url` | `string` |  |
-| `platform` | `string` |  |
+| `platforms` | `string` |  |
 | `published_date` | `string` |  |
 | `status` | `string` |  |
 | `thumbnail` | `string` |  |
 | `title` | `string` |  |
 | `type` | `string` |  |
-| `user` | `int` |  |
+| `users` | `int` |  |
 | `worth` | `string` |  |
 
 #### Example: Load

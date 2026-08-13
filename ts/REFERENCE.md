@@ -133,16 +133,16 @@ const giveaway = client.Giveaway()
 | `gamerpower_url` | `string` | No |  |
 | `id` | `number` | No |  |
 | `image` | `string` | No |  |
-| `instruction` | `string` | No |  |
+| `instructions` | `string` | No |  |
 | `open_giveaway` | `string` | No |  |
 | `open_giveaway_url` | `string` | No |  |
-| `platform` | `string` | No |  |
+| `platforms` | `string` | No |  |
 | `published_date` | `string` | No |  |
 | `status` | `string` | No |  |
 | `thumbnail` | `string` | No |  |
 | `title` | `string` | No |  |
 | `type` | `string` | No |  |
-| `user` | `number` | No |  |
+| `users` | `number` | No |  |
 | `worth` | `string` | No |  |
 
 ### Operations

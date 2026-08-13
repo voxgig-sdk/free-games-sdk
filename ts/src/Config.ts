@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'FreeGames',
   }
 
 
@@ -94,7 +94,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "instruction",
+          "name": "instructions",
           "req": false,
           "type": "`$STRING`",
           "index$": 5
@@ -115,7 +115,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "platform",
+          "name": "platforms",
           "req": false,
           "type": "`$STRING`",
           "index$": 8
@@ -157,7 +157,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "user",
+          "name": "users",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 14
@@ -206,6 +206,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/giveaways",
               "parts": [
@@ -246,6 +247,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/filter",
               "parts": [
@@ -284,6 +286,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/giveaway",
               "parts": [
@@ -353,6 +356,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/worth",
               "parts": [

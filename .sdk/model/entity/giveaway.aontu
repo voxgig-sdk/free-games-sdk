@@ -31,7 +31,7 @@ main: kit: entity: giveaway: {
       type: "`$STRING`"
     }
     {
-      name: "instruction"
+      name: "instructions"
       req: false
       type: "`$STRING`"
     }
@@ -46,7 +46,7 @@ main: kit: entity: giveaway: {
       type: "`$STRING`"
     }
     {
-      name: "platform"
+      name: "platforms"
       req: false
       type: "`$STRING`"
     }
@@ -76,7 +76,7 @@ main: kit: entity: giveaway: {
       type: "`$STRING`"
     }
     {
-      name: "user"
+      name: "users"
       req: false
       type: "`$INTEGER`"
     }

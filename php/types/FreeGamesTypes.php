@@ -20,16 +20,16 @@ class Giveaway
     public ?string $gamerpower_url = null;
     public ?int $id = null;
     public ?string $image = null;
-    public ?string $instruction = null;
+    public ?string $instructions = null;
     public ?string $open_giveaway = null;
     public ?string $open_giveaway_url = null;
-    public ?string $platform = null;
+    public ?string $platforms = null;
     public ?string $published_date = null;
     public ?string $status = null;
     public ?string $thumbnail = null;
     public ?string $title = null;
     public ?string $type = null;
-    public ?int $user = null;
+    public ?int $users = null;
     public ?string $worth = null;
 }
 
@@ -41,16 +41,16 @@ class GiveawayLoadMatch
     public ?string $gamerpower_url = null;
     public int $id;
     public ?string $image = null;
-    public ?string $instruction = null;
+    public ?string $instructions = null;
     public ?string $open_giveaway = null;
     public ?string $open_giveaway_url = null;
-    public ?string $platform = null;
+    public ?string $platforms = null;
     public ?string $published_date = null;
     public ?string $status = null;
     public ?string $thumbnail = null;
     public ?string $title = null;
     public ?string $type = null;
-    public ?int $user = null;
+    public ?int $users = null;
     public ?string $worth = null;
 }
 
@@ -62,16 +62,16 @@ class GiveawayListMatch
     public ?string $gamerpower_url = null;
     public ?int $id = null;
     public ?string $image = null;
-    public ?string $instruction = null;
+    public ?string $instructions = null;
     public ?string $open_giveaway = null;
     public ?string $open_giveaway_url = null;
-    public ?string $platform = null;
+    public ?string $platforms = null;
     public ?string $published_date = null;
     public ?string $status = null;
     public ?string $thumbnail = null;
     public ?string $title = null;
     public ?string $type = null;
-    public ?int $user = null;
+    public ?int $users = null;
     public ?string $worth = null;
 }
 

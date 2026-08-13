@@ -102,16 +102,16 @@ giveaway = client.Giveaway
 | `gamerpower_url` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `image` | `String` | No |  |
-| `instruction` | `String` | No |  |
+| `instructions` | `String` | No |  |
 | `open_giveaway` | `String` | No |  |
 | `open_giveaway_url` | `String` | No |  |
-| `platform` | `String` | No |  |
+| `platforms` | `String` | No |  |
 | `published_date` | `String` | No |  |
 | `status` | `String` | No |  |
 | `thumbnail` | `String` | No |  |
 | `title` | `String` | No |  |
 | `type` | `String` | No |  |
-| `user` | `Integer` | No |  |
+| `users` | `Integer` | No |  |
 | `worth` | `String` | No |  |
 
 ### Operations

@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Giveaway record (raises on error).
+  # load returns the ENTITY — call data_get for the Giveaway record (raises on error).
   giveaway = client.Giveaway.load({ "id" => 1 })
   puts giveaway
 rescue => err
@@ -134,7 +134,8 @@ client = FreeGamesSDK.test({
   "entity" => { "giveaway" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 giveaway = client.Giveaway.list()
 puts giveaway
 ```
@@ -258,16 +259,16 @@ returns a result `Hash` with these keys:
 | `gamerpower_url` |  |
 | `id` |  |
 | `image` |  |
-| `instruction` |  |
+| `instructions` |  |
 | `open_giveaway` |  |
 | `open_giveaway_url` |  |
-| `platform` |  |
+| `platforms` |  |
 | `published_date` |  |
 | `status` |  |
 | `thumbnail` |  |
 | `title` |  |
 | `type` |  |
-| `user` |  |
+| `users` |  |
 | `worth` |  |
 
 Operations: List, Load.
@@ -310,22 +311,22 @@ Create an instance: `giveaway = client.Giveaway`
 | `gamerpower_url` | `String` |  |
 | `id` | `Integer` |  |
 | `image` | `String` |  |
-| `instruction` | `String` |  |
+| `instructions` | `String` |  |
 | `open_giveaway` | `String` |  |
 | `open_giveaway_url` | `String` |  |
-| `platform` | `String` |  |
+| `platforms` | `String` |  |
 | `published_date` | `String` |  |
 | `status` | `String` |  |
 | `thumbnail` | `String` |  |
 | `title` | `String` |  |
 | `type` | `String` |  |
-| `user` | `Integer` |  |
+| `users` | `Integer` |  |
 | `worth` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Giveaway record (raises on error).
+# load returns the ENTITY — call data_get for the Giveaway record (raises on error).
 giveaway = client.Giveaway.load({ "id" => 1 })
 ```
 
@@ -357,7 +358,7 @@ Create an instance: `worth = client.Worth`
 #### Example: Load
 
 ```ruby
-# load returns the bare Worth record (raises on error).
+# load returns the ENTITY — call data_get for the Worth record (raises on error).
 worth = client.Worth.load()
 ```
 

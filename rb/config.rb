@@ -63,7 +63,7 @@ module FreeGamesConfig
             },
             {
               "active" => true,
-              "name" => "instruction",
+              "name" => "instructions",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 5,
@@ -84,7 +84,7 @@ module FreeGamesConfig
             },
             {
               "active" => true,
-              "name" => "platform",
+              "name" => "platforms",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 8,
@@ -126,7 +126,7 @@ module FreeGamesConfig
             },
             {
               "active" => true,
-              "name" => "user",
+              "name" => "users",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 14,
@@ -175,6 +175,7 @@ module FreeGamesConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/giveaways",
                   "parts" => [
@@ -215,6 +216,7 @@ module FreeGamesConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/filter",
                   "parts" => [
@@ -253,6 +255,7 @@ module FreeGamesConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/giveaway",
                   "parts" => [
@@ -322,6 +325,7 @@ module FreeGamesConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/worth",
                   "parts" => [

@@ -23,8 +23,8 @@ module FreeGamesTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("FREEGAMES_TEST_LIVE")
-    override = getenv("FREEGAMES_TEST_OVERRIDE")
+    live = getenv("FREE_GAMES_TEST_LIVE")
+    override = getenv("FREE_GAMES_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module FreeGamesTestRunner
       end
     end
 
-    explain = getenv("FREEGAMES_TEST_EXPLAIN")
-    m["FREEGAMES_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("FREE_GAMES_TEST_EXPLAIN")
+    m["FREE_GAMES_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end
