@@ -28,7 +28,7 @@ class FreeGamesSDK
     utility = FreeGamesUtility.new
     @_utility = utility
 
-    config = FreeGamesConfig.make_config
+    config = FreeGamesConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
