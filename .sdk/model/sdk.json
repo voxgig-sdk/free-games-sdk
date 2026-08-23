@@ -36,96 +36,112 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Detailed description of the giveaway",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "end_date",
               "req": false,
+              "short": "Date and time when the giveaway ends",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gamerpower_url",
               "req": false,
+              "short": "URL to the giveaway page on GamerPower",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the giveaway",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "image",
               "req": false,
+              "short": "URL to the full-size image",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "instructions",
               "req": false,
+              "short": "Instructions on how to claim the giveaway",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "open_giveaway",
               "req": false,
+              "short": "Direct URL to claim the giveaway",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "open_giveaway_url",
               "req": false,
+              "short": "URL to open and claim the giveaway",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "platforms",
               "req": false,
+              "short": "Platforms on which the giveaway is available",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "published_date",
               "req": false,
+              "short": "Date and time when the giveaway was published",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "status",
               "req": false,
+              "short": "Current status of the giveaway",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "thumbnail",
               "req": false,
+              "short": "URL to the thumbnail image",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "title",
               "req": false,
+              "short": "Title of the giveaway",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Type of giveaway (e.g., Game, Loot, Beta)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "users",
               "req": false,
+              "short": "Number of users participating in the giveaway",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "worth",
               "req": false,
+              "short": "Monetary value of the giveaway",
               "type": "`$STRING`"
             }
           ],
@@ -279,12 +295,14 @@
               "active": true,
               "name": "active_giveaways_number",
               "req": false,
+              "short": "Number of active giveaways",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "worth_estimation_usd",
               "req": false,
+              "short": "Total estimated worth in USD",
               "type": "`$STRING`"
             }
           ],

@@ -91,22 +91,22 @@ giveaway = client.Giveaway()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `str` | No |  |
-| `end_date` | `str` | No |  |
-| `gamerpower_url` | `str` | No |  |
-| `id` | `int` | No |  |
-| `image` | `str` | No |  |
-| `instructions` | `str` | No |  |
-| `open_giveaway` | `str` | No |  |
-| `open_giveaway_url` | `str` | No |  |
-| `platforms` | `str` | No |  |
-| `published_date` | `str` | No |  |
-| `status` | `str` | No |  |
-| `thumbnail` | `str` | No |  |
-| `title` | `str` | No |  |
-| `type` | `str` | No |  |
-| `users` | `int` | No |  |
-| `worth` | `str` | No |  |
+| `description` | `str` | No | Detailed description of the giveaway |
+| `end_date` | `str` | No | Date and time when the giveaway ends |
+| `gamerpower_url` | `str` | No | URL to the giveaway page on GamerPower |
+| `id` | `int` | No | Unique identifier for the giveaway |
+| `image` | `str` | No | URL to the full-size image |
+| `instructions` | `str` | No | Instructions on how to claim the giveaway |
+| `open_giveaway` | `str` | No | Direct URL to claim the giveaway |
+| `open_giveaway_url` | `str` | No | URL to open and claim the giveaway |
+| `platforms` | `str` | No | Platforms on which the giveaway is available |
+| `published_date` | `str` | No | Date and time when the giveaway was published |
+| `status` | `str` | No | Current status of the giveaway |
+| `thumbnail` | `str` | No | URL to the thumbnail image |
+| `title` | `str` | No | Title of the giveaway |
+| `type` | `str` | No | Type of giveaway (e.g., Game, Loot, Beta) |
+| `users` | `int` | No | Number of users participating in the giveaway |
+| `worth` | `str` | No | Monetary value of the giveaway |
 
 ### Operations
 
@@ -167,8 +167,8 @@ worth = client.Worth()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_giveaways_number` | `int` | No |  |
-| `worth_estimation_usd` | `str` | No |  |
+| `active_giveaways_number` | `int` | No | Number of active giveaways |
+| `worth_estimation_usd` | `str` | No | Total estimated worth in USD |
 
 ### Operations
 

@@ -8,11 +8,13 @@ main: kit: entity: worth: {
     {
       name: "active_giveaways_number"
       req: false
+      short: "Number of active giveaways"
       type: "`$INTEGER`"
     }
     {
       name: "worth_estimation_usd"
       req: false
+      short: "Total estimated worth in USD"
       type: "`$STRING`"
     }
   ]

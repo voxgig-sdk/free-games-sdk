@@ -254,22 +254,22 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `end_date` |  |
-| `gamerpower_url` |  |
-| `id` |  |
-| `image` |  |
-| `instructions` |  |
-| `open_giveaway` |  |
-| `open_giveaway_url` |  |
-| `platforms` |  |
-| `published_date` |  |
-| `status` |  |
-| `thumbnail` |  |
-| `title` |  |
-| `type` |  |
-| `users` |  |
-| `worth` |  |
+| `description` | Detailed description of the giveaway |
+| `end_date` | Date and time when the giveaway ends |
+| `gamerpower_url` | URL to the giveaway page on GamerPower |
+| `id` | Unique identifier for the giveaway |
+| `image` | URL to the full-size image |
+| `instructions` | Instructions on how to claim the giveaway |
+| `open_giveaway` | Direct URL to claim the giveaway |
+| `open_giveaway_url` | URL to open and claim the giveaway |
+| `platforms` | Platforms on which the giveaway is available |
+| `published_date` | Date and time when the giveaway was published |
+| `status` | Current status of the giveaway |
+| `thumbnail` | URL to the thumbnail image |
+| `title` | Title of the giveaway |
+| `type` | Type of giveaway (e.g., Game, Loot, Beta) |
+| `users` | Number of users participating in the giveaway |
+| `worth` | Monetary value of the giveaway |
 
 Operations: List, Load.
 
@@ -279,8 +279,8 @@ API path: `/giveaways`
 
 | Field | Description |
 | --- | --- |
-| `active_giveaways_number` |  |
-| `worth_estimation_usd` |  |
+| `active_giveaways_number` | Number of active giveaways |
+| `worth_estimation_usd` | Total estimated worth in USD |
 
 Operations: Load.
 
@@ -306,22 +306,22 @@ Create an instance: `giveaway = client.Giveaway`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `String` |  |
-| `end_date` | `String` |  |
-| `gamerpower_url` | `String` |  |
-| `id` | `Integer` |  |
-| `image` | `String` |  |
-| `instructions` | `String` |  |
-| `open_giveaway` | `String` |  |
-| `open_giveaway_url` | `String` |  |
-| `platforms` | `String` |  |
-| `published_date` | `String` |  |
-| `status` | `String` |  |
-| `thumbnail` | `String` |  |
-| `title` | `String` |  |
-| `type` | `String` |  |
-| `users` | `Integer` |  |
-| `worth` | `String` |  |
+| `description` | `String` | Detailed description of the giveaway |
+| `end_date` | `String` | Date and time when the giveaway ends |
+| `gamerpower_url` | `String` | URL to the giveaway page on GamerPower |
+| `id` | `Integer` | Unique identifier for the giveaway |
+| `image` | `String` | URL to the full-size image |
+| `instructions` | `String` | Instructions on how to claim the giveaway |
+| `open_giveaway` | `String` | Direct URL to claim the giveaway |
+| `open_giveaway_url` | `String` | URL to open and claim the giveaway |
+| `platforms` | `String` | Platforms on which the giveaway is available |
+| `published_date` | `String` | Date and time when the giveaway was published |
+| `status` | `String` | Current status of the giveaway |
+| `thumbnail` | `String` | URL to the thumbnail image |
+| `title` | `String` | Title of the giveaway |
+| `type` | `String` | Type of giveaway (e.g., Game, Loot, Beta) |
+| `users` | `Integer` | Number of users participating in the giveaway |
+| `worth` | `String` | Monetary value of the giveaway |
 
 #### Example: Load
 
@@ -352,8 +352,8 @@ Create an instance: `worth = client.Worth`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active_giveaways_number` | `Integer` |  |
-| `worth_estimation_usd` | `String` |  |
+| `active_giveaways_number` | `Integer` | Number of active giveaways |
+| `worth_estimation_usd` | `String` | Total estimated worth in USD |
 
 #### Example: Load
 

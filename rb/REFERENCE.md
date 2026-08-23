@@ -97,22 +97,22 @@ giveaway = client.Giveaway
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `String` | No |  |
-| `end_date` | `String` | No |  |
-| `gamerpower_url` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `image` | `String` | No |  |
-| `instructions` | `String` | No |  |
-| `open_giveaway` | `String` | No |  |
-| `open_giveaway_url` | `String` | No |  |
-| `platforms` | `String` | No |  |
-| `published_date` | `String` | No |  |
-| `status` | `String` | No |  |
-| `thumbnail` | `String` | No |  |
-| `title` | `String` | No |  |
-| `type` | `String` | No |  |
-| `users` | `Integer` | No |  |
-| `worth` | `String` | No |  |
+| `description` | `String` | No | Detailed description of the giveaway |
+| `end_date` | `String` | No | Date and time when the giveaway ends |
+| `gamerpower_url` | `String` | No | URL to the giveaway page on GamerPower |
+| `id` | `Integer` | No | Unique identifier for the giveaway |
+| `image` | `String` | No | URL to the full-size image |
+| `instructions` | `String` | No | Instructions on how to claim the giveaway |
+| `open_giveaway` | `String` | No | Direct URL to claim the giveaway |
+| `open_giveaway_url` | `String` | No | URL to open and claim the giveaway |
+| `platforms` | `String` | No | Platforms on which the giveaway is available |
+| `published_date` | `String` | No | Date and time when the giveaway was published |
+| `status` | `String` | No | Current status of the giveaway |
+| `thumbnail` | `String` | No | URL to the thumbnail image |
+| `title` | `String` | No | Title of the giveaway |
+| `type` | `String` | No | Type of giveaway (e.g., Game, Loot, Beta) |
+| `users` | `Integer` | No | Number of users participating in the giveaway |
+| `worth` | `String` | No | Monetary value of the giveaway |
 
 ### Operations
 
@@ -172,8 +172,8 @@ worth = client.Worth
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_giveaways_number` | `Integer` | No |  |
-| `worth_estimation_usd` | `String` | No |  |
+| `active_giveaways_number` | `Integer` | No | Number of active giveaways |
+| `worth_estimation_usd` | `String` | No | Total estimated worth in USD |
 
 ### Operations
 

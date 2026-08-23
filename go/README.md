@@ -6,7 +6,7 @@ The Golang SDK for the FreeGames API — an entity-oriented client using standar
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Giveaway(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -270,22 +270,22 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"description"` |  |
-| `"end_date"` |  |
-| `"gamerpower_url"` |  |
-| `"id"` |  |
-| `"image"` |  |
-| `"instructions"` |  |
-| `"open_giveaway"` |  |
-| `"open_giveaway_url"` |  |
-| `"platforms"` |  |
-| `"published_date"` |  |
-| `"status"` |  |
-| `"thumbnail"` |  |
-| `"title"` |  |
-| `"type"` |  |
-| `"users"` |  |
-| `"worth"` |  |
+| `"description"` | Detailed description of the giveaway |
+| `"end_date"` | Date and time when the giveaway ends |
+| `"gamerpower_url"` | URL to the giveaway page on GamerPower |
+| `"id"` | Unique identifier for the giveaway |
+| `"image"` | URL to the full-size image |
+| `"instructions"` | Instructions on how to claim the giveaway |
+| `"open_giveaway"` | Direct URL to claim the giveaway |
+| `"open_giveaway_url"` | URL to open and claim the giveaway |
+| `"platforms"` | Platforms on which the giveaway is available |
+| `"published_date"` | Date and time when the giveaway was published |
+| `"status"` | Current status of the giveaway |
+| `"thumbnail"` | URL to the thumbnail image |
+| `"title"` | Title of the giveaway |
+| `"type"` | Type of giveaway (e.g., Game, Loot, Beta) |
+| `"users"` | Number of users participating in the giveaway |
+| `"worth"` | Monetary value of the giveaway |
 
 Operations: List, Load.
 
@@ -295,8 +295,8 @@ API path: `/giveaways`
 
 | Field | Description |
 | --- | --- |
-| `"active_giveaways_number"` |  |
-| `"worth_estimation_usd"` |  |
+| `"active_giveaways_number"` | Number of active giveaways |
+| `"worth_estimation_usd"` | Total estimated worth in USD |
 
 Operations: Load.
 
@@ -322,22 +322,22 @@ Create an instance: `giveaway := client.Giveaway(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `end_date` | `string` |  |
-| `gamerpower_url` | `string` |  |
-| `id` | `int` |  |
-| `image` | `string` |  |
-| `instructions` | `string` |  |
-| `open_giveaway` | `string` |  |
-| `open_giveaway_url` | `string` |  |
-| `platforms` | `string` |  |
-| `published_date` | `string` |  |
-| `status` | `string` |  |
-| `thumbnail` | `string` |  |
-| `title` | `string` |  |
-| `type` | `string` |  |
-| `users` | `int` |  |
-| `worth` | `string` |  |
+| `description` | `string` | Detailed description of the giveaway |
+| `end_date` | `string` | Date and time when the giveaway ends |
+| `gamerpower_url` | `string` | URL to the giveaway page on GamerPower |
+| `id` | `int` | Unique identifier for the giveaway |
+| `image` | `string` | URL to the full-size image |
+| `instructions` | `string` | Instructions on how to claim the giveaway |
+| `open_giveaway` | `string` | Direct URL to claim the giveaway |
+| `open_giveaway_url` | `string` | URL to open and claim the giveaway |
+| `platforms` | `string` | Platforms on which the giveaway is available |
+| `published_date` | `string` | Date and time when the giveaway was published |
+| `status` | `string` | Current status of the giveaway |
+| `thumbnail` | `string` | URL to the thumbnail image |
+| `title` | `string` | Title of the giveaway |
+| `type` | `string` | Type of giveaway (e.g., Game, Loot, Beta) |
+| `users` | `int` | Number of users participating in the giveaway |
+| `worth` | `string` | Monetary value of the giveaway |
 
 #### Example: Load
 
@@ -374,8 +374,8 @@ Create an instance: `worth := client.Worth(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active_giveaways_number` | `int` |  |
-| `worth_estimation_usd` | `string` |  |
+| `active_giveaways_number` | `int` | Number of active giveaways |
+| `worth_estimation_usd` | `string` | Total estimated worth in USD |
 
 #### Example: Load
 

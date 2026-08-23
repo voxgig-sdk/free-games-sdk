@@ -102,22 +102,22 @@ fmt.Println(giveaway.GetName()) // "giveaway"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `end_date` | `string` | No |  |
-| `gamerpower_url` | `string` | No |  |
-| `id` | `int` | No |  |
-| `image` | `string` | No |  |
-| `instructions` | `string` | No |  |
-| `open_giveaway` | `string` | No |  |
-| `open_giveaway_url` | `string` | No |  |
-| `platforms` | `string` | No |  |
-| `published_date` | `string` | No |  |
-| `status` | `string` | No |  |
-| `thumbnail` | `string` | No |  |
-| `title` | `string` | No |  |
-| `type` | `string` | No |  |
-| `users` | `int` | No |  |
-| `worth` | `string` | No |  |
+| `description` | `string` | No | Detailed description of the giveaway |
+| `end_date` | `string` | No | Date and time when the giveaway ends |
+| `gamerpower_url` | `string` | No | URL to the giveaway page on GamerPower |
+| `id` | `int` | No | Unique identifier for the giveaway |
+| `image` | `string` | No | URL to the full-size image |
+| `instructions` | `string` | No | Instructions on how to claim the giveaway |
+| `open_giveaway` | `string` | No | Direct URL to claim the giveaway |
+| `open_giveaway_url` | `string` | No | URL to open and claim the giveaway |
+| `platforms` | `string` | No | Platforms on which the giveaway is available |
+| `published_date` | `string` | No | Date and time when the giveaway was published |
+| `status` | `string` | No | Current status of the giveaway |
+| `thumbnail` | `string` | No | URL to the thumbnail image |
+| `title` | `string` | No | Title of the giveaway |
+| `type` | `string` | No | Type of giveaway (e.g., Game, Loot, Beta) |
+| `users` | `int` | No | Number of users participating in the giveaway |
+| `worth` | `string` | No | Monetary value of the giveaway |
 
 ### Operations
 
@@ -180,8 +180,8 @@ fmt.Println(worth.GetName()) // "worth"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_giveaways_number` | `int` | No |  |
-| `worth_estimation_usd` | `string` | No |  |
+| `active_giveaways_number` | `int` | No | Number of active giveaways |
+| `worth_estimation_usd` | `string` | No | Total estimated worth in USD |
 
 ### Operations
 

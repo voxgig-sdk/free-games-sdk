@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "FreeGames",
+			"slug": "free-games",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -34,66 +37,82 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "Detailed description of the giveaway",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "end_date",
+						"short": "Date and time when the giveaway ends",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gamerpower_url",
+						"short": "URL to the giveaway page on GamerPower",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the giveaway",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "image",
+						"short": "URL to the full-size image",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "instructions",
+						"short": "Instructions on how to claim the giveaway",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "open_giveaway",
+						"short": "Direct URL to claim the giveaway",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "open_giveaway_url",
+						"short": "URL to open and claim the giveaway",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "platforms",
+						"short": "Platforms on which the giveaway is available",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "published_date",
+						"short": "Date and time when the giveaway was published",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "status",
+						"short": "Current status of the giveaway",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "thumbnail",
+						"short": "URL to the thumbnail image",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "title",
+						"short": "Title of the giveaway",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Type of giveaway (e.g., Game, Loot, Beta)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "users",
+						"short": "Number of users participating in the giveaway",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "worth",
+						"short": "Monetary value of the giveaway",
 						"type": "`$STRING`",
 					},
 				},
@@ -223,10 +242,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "active_giveaways_number",
+						"short": "Number of active giveaways",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "worth_estimation_usd",
+						"short": "Total estimated worth in USD",
 						"type": "`$STRING`",
 					},
 				},
