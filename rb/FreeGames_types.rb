@@ -79,139 +79,27 @@ Giveaway = Struct.new(
 
 # Request payload for Giveaway#load.
 #
-# @!attribute [rw] description
-#   @return [String, nil]
-#
-# @!attribute [rw] end_date
-#   @return [String, nil]
-#
-# @!attribute [rw] gamerpower_url
-#   @return [String, nil]
-#
 # @!attribute [rw] id
 #   @return [Integer]
-#
-# @!attribute [rw] image
-#   @return [String, nil]
-#
-# @!attribute [rw] instructions
-#   @return [String, nil]
-#
-# @!attribute [rw] open_giveaway
-#   @return [String, nil]
-#
-# @!attribute [rw] open_giveaway_url
-#   @return [String, nil]
-#
-# @!attribute [rw] platforms
-#   @return [String, nil]
-#
-# @!attribute [rw] published_date
-#   @return [String, nil]
-#
-# @!attribute [rw] status
-#   @return [String, nil]
-#
-# @!attribute [rw] thumbnail
-#   @return [String, nil]
-#
-# @!attribute [rw] title
-#   @return [String, nil]
-#
-# @!attribute [rw] type
-#   @return [String, nil]
-#
-# @!attribute [rw] users
-#   @return [Integer, nil]
-#
-# @!attribute [rw] worth
-#   @return [String, nil]
 GiveawayLoadMatch = Struct.new(
-  :description,
-  :end_date,
-  :gamerpower_url,
   :id,
-  :image,
-  :instructions,
-  :open_giveaway,
-  :open_giveaway_url,
-  :platforms,
-  :published_date,
-  :status,
-  :thumbnail,
-  :title,
-  :type,
-  :users,
-  :worth,
   keyword_init: true
 )
 
 # Request payload for Giveaway#list.
 #
-# @!attribute [rw] description
+# @!attribute [rw] platform
 #   @return [String, nil]
 #
-# @!attribute [rw] end_date
-#   @return [String, nil]
-#
-# @!attribute [rw] gamerpower_url
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [Integer, nil]
-#
-# @!attribute [rw] image
-#   @return [String, nil]
-#
-# @!attribute [rw] instructions
-#   @return [String, nil]
-#
-# @!attribute [rw] open_giveaway
-#   @return [String, nil]
-#
-# @!attribute [rw] open_giveaway_url
-#   @return [String, nil]
-#
-# @!attribute [rw] platforms
-#   @return [String, nil]
-#
-# @!attribute [rw] published_date
-#   @return [String, nil]
-#
-# @!attribute [rw] status
-#   @return [String, nil]
-#
-# @!attribute [rw] thumbnail
-#   @return [String, nil]
-#
-# @!attribute [rw] title
+# @!attribute [rw] sort_by
 #   @return [String, nil]
 #
 # @!attribute [rw] type
 #   @return [String, nil]
-#
-# @!attribute [rw] users
-#   @return [Integer, nil]
-#
-# @!attribute [rw] worth
-#   @return [String, nil]
 GiveawayListMatch = Struct.new(
-  :description,
-  :end_date,
-  :gamerpower_url,
-  :id,
-  :image,
-  :instructions,
-  :open_giveaway,
-  :open_giveaway_url,
-  :platforms,
-  :published_date,
-  :status,
-  :thumbnail,
-  :title,
+  :platform,
+  :sort_by,
   :type,
-  :users,
-  :worth,
   keyword_init: true
 )
 
@@ -230,14 +118,14 @@ Worth = Struct.new(
 
 # Request payload for Worth#load.
 #
-# @!attribute [rw] active_giveaways_number
-#   @return [Integer, nil]
+# @!attribute [rw] platform
+#   @return [String, nil]
 #
-# @!attribute [rw] worth_estimation_usd
+# @!attribute [rw] type
 #   @return [String, nil]
 WorthLoadMatch = Struct.new(
-  :active_giveaways_number,
-  :worth_estimation_usd,
+  :platform,
+  :type,
   keyword_init: true
 )
 

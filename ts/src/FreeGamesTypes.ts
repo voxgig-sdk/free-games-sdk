@@ -25,41 +25,13 @@ export interface Giveaway {
 }
 
 export interface GiveawayLoadMatch {
-  description?: string
-  end_date?: string
-  gamerpower_url?: string
   id: number
-  image?: string
-  instructions?: string
-  open_giveaway?: string
-  open_giveaway_url?: string
-  platforms?: string
-  published_date?: string
-  status?: string
-  thumbnail?: string
-  title?: string
-  type?: string
-  users?: number
-  worth?: string
 }
 
 export interface GiveawayListMatch {
-  description?: string
-  end_date?: string
-  gamerpower_url?: string
-  id?: number
-  image?: string
-  instructions?: string
-  open_giveaway?: string
-  open_giveaway_url?: string
-  platforms?: string
-  published_date?: string
-  status?: string
-  thumbnail?: string
-  title?: string
+  platform?: string
+  sort_by?: string
   type?: string
-  users?: number
-  worth?: string
 }
 
 export interface Worth {
@@ -68,7 +40,7 @@ export interface Worth {
 }
 
 export interface WorthLoadMatch {
-  active_giveaways_number?: number
-  worth_estimation_usd?: string
+  platform?: string
+  type?: string
 }
 

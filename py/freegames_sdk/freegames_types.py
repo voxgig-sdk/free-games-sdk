@@ -35,45 +35,14 @@ class Giveaway(TypedDict, total=False):
     worth: str
 
 
-class GiveawayLoadMatchRequired(TypedDict):
+class GiveawayLoadMatch(TypedDict):
     id: int
-
-
-class GiveawayLoadMatch(GiveawayLoadMatchRequired, total=False):
-    description: str
-    end_date: str
-    gamerpower_url: str
-    image: str
-    instructions: str
-    open_giveaway: str
-    open_giveaway_url: str
-    platforms: str
-    published_date: str
-    status: str
-    thumbnail: str
-    title: str
-    type: str
-    users: int
-    worth: str
 
 
 class GiveawayListMatch(TypedDict, total=False):
-    description: str
-    end_date: str
-    gamerpower_url: str
-    id: int
-    image: str
-    instructions: str
-    open_giveaway: str
-    open_giveaway_url: str
-    platforms: str
-    published_date: str
-    status: str
-    thumbnail: str
-    title: str
+    platform: str
+    sort_by: str
     type: str
-    users: int
-    worth: str
 
 
 class Worth(TypedDict, total=False):
@@ -82,5 +51,5 @@ class Worth(TypedDict, total=False):
 
 
 class WorthLoadMatch(TypedDict, total=False):
-    active_giveaways_number: int
-    worth_estimation_usd: str
+    platform: str
+    type: str

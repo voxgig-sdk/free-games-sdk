@@ -34,42 +34,14 @@ type Giveaway struct {
 
 // GiveawayLoadMatch is the typed request payload for Giveaway.LoadTyped.
 type GiveawayLoadMatch struct {
-	Description *string `json:"description,omitempty"`
-	EndDate *string `json:"end_date,omitempty"`
-	GamerpowerUrl *string `json:"gamerpower_url,omitempty"`
 	Id int `json:"id"`
-	Image *string `json:"image,omitempty"`
-	Instructions *string `json:"instructions,omitempty"`
-	OpenGiveaway *string `json:"open_giveaway,omitempty"`
-	OpenGiveawayUrl *string `json:"open_giveaway_url,omitempty"`
-	Platforms *string `json:"platforms,omitempty"`
-	PublishedDate *string `json:"published_date,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Thumbnail *string `json:"thumbnail,omitempty"`
-	Title *string `json:"title,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Users *int `json:"users,omitempty"`
-	Worth *string `json:"worth,omitempty"`
 }
 
 // GiveawayListMatch is the typed request payload for Giveaway.ListTyped.
 type GiveawayListMatch struct {
-	Description *string `json:"description,omitempty"`
-	EndDate *string `json:"end_date,omitempty"`
-	GamerpowerUrl *string `json:"gamerpower_url,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Instructions *string `json:"instructions,omitempty"`
-	OpenGiveaway *string `json:"open_giveaway,omitempty"`
-	OpenGiveawayUrl *string `json:"open_giveaway_url,omitempty"`
-	Platforms *string `json:"platforms,omitempty"`
-	PublishedDate *string `json:"published_date,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Thumbnail *string `json:"thumbnail,omitempty"`
-	Title *string `json:"title,omitempty"`
+	Platform *string `json:"platform,omitempty"`
+	SortBy *string `json:"sort_by,omitempty"`
 	Type *string `json:"type,omitempty"`
-	Users *int `json:"users,omitempty"`
-	Worth *string `json:"worth,omitempty"`
 }
 
 // Worth is the typed data model for the worth entity.
@@ -80,8 +52,8 @@ type Worth struct {
 
 // WorthLoadMatch is the typed request payload for Worth.LoadTyped.
 type WorthLoadMatch struct {
-	ActiveGiveawaysNumber *int `json:"active_giveaways_number,omitempty"`
-	WorthEstimationUsd *string `json:"worth_estimation_usd,omitempty"`
+	Platform *string `json:"platform,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

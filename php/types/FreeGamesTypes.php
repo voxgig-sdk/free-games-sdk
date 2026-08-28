@@ -36,43 +36,15 @@ class Giveaway
 /** Request payload for Giveaway#load. */
 class GiveawayLoadMatch
 {
-    public ?string $description = null;
-    public ?string $end_date = null;
-    public ?string $gamerpower_url = null;
     public int $id;
-    public ?string $image = null;
-    public ?string $instructions = null;
-    public ?string $open_giveaway = null;
-    public ?string $open_giveaway_url = null;
-    public ?string $platforms = null;
-    public ?string $published_date = null;
-    public ?string $status = null;
-    public ?string $thumbnail = null;
-    public ?string $title = null;
-    public ?string $type = null;
-    public ?int $users = null;
-    public ?string $worth = null;
 }
 
 /** Request payload for Giveaway#list. */
 class GiveawayListMatch
 {
-    public ?string $description = null;
-    public ?string $end_date = null;
-    public ?string $gamerpower_url = null;
-    public ?int $id = null;
-    public ?string $image = null;
-    public ?string $instructions = null;
-    public ?string $open_giveaway = null;
-    public ?string $open_giveaway_url = null;
-    public ?string $platforms = null;
-    public ?string $published_date = null;
-    public ?string $status = null;
-    public ?string $thumbnail = null;
-    public ?string $title = null;
+    public ?string $platform = null;
+    public ?string $sort_by = null;
     public ?string $type = null;
-    public ?int $users = null;
-    public ?string $worth = null;
 }
 
 /** Worth entity data model. */
@@ -85,7 +57,7 @@ class Worth
 /** Request payload for Worth#load. */
 class WorthLoadMatch
 {
-    public ?int $active_giveaways_number = null;
-    public ?string $worth_estimation_usd = null;
+    public ?string $platform = null;
+    public ?string $type = null;
 }
 
