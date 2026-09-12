@@ -18,6 +18,7 @@ main: kit: entity: giveaway: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "gamerpower_url"
       req: false
       short: "URL to the giveaway page on GamerPower"
@@ -30,6 +31,7 @@ main: kit: entity: giveaway: {
       type: "`$INTEGER`"
     }
     {
+      format: "uri"
       name: "image"
       req: false
       short: "URL to the full-size image"
@@ -42,12 +44,14 @@ main: kit: entity: giveaway: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "open_giveaway"
       req: false
       short: "Direct URL to claim the giveaway"
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "open_giveaway_url"
       req: false
       short: "URL to open and claim the giveaway"
@@ -72,6 +76,7 @@ main: kit: entity: giveaway: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "thumbnail"
       req: false
       short: "URL to the thumbnail image"
@@ -141,8 +146,10 @@ main: kit: entity: giveaway: {
           }
           method: "GET"
           orig: "/giveaways"
-          parts: [
-            "giveaways"
+          segments: [
+            {
+              lit: "giveaways"
+            }
           ]
           select: {
             exist: [
@@ -177,8 +184,10 @@ main: kit: entity: giveaway: {
           }
           method: "GET"
           orig: "/filter"
-          parts: [
-            "filter"
+          segments: [
+            {
+              lit: "filter"
+            }
           ]
           select: {
             exist: [
@@ -210,8 +219,10 @@ main: kit: entity: giveaway: {
           }
           method: "GET"
           orig: "/giveaway"
-          parts: [
-            "giveaway"
+          segments: [
+            {
+              lit: "giveaway"
+            }
           ]
           select: {
             exist: [

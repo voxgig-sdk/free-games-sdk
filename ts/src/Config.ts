@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -80,6 +91,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "gamerpower_url",
           "short": "URL to the giveaway page on GamerPower",
           "type": "`$STRING`"
@@ -90,6 +102,7 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "uri",
           "name": "image",
           "short": "URL to the full-size image",
           "type": "`$STRING`"
@@ -100,11 +113,13 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "open_giveaway",
           "short": "Direct URL to claim the giveaway",
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "open_giveaway_url",
           "short": "URL to open and claim the giveaway",
           "type": "`$STRING`"
@@ -125,6 +140,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "thumbnail",
           "short": "URL to the thumbnail image",
           "type": "`$STRING`"
@@ -150,6 +166,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "giveaway",
       "op": {
         "list": {
@@ -182,8 +202,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/giveaways",
-              "parts": [
-                "giveaways"
+              "segments": [
+                {
+                  "lit": "giveaways"
+                }
               ],
               "select": {
                 "exist": [
@@ -195,7 +217,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "giveaways"
+              ]
             },
             {
               "args": {
@@ -217,8 +242,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/filter",
-              "parts": [
-                "filter"
+              "segments": [
+                {
+                  "lit": "filter"
+                }
               ],
               "select": {
                 "exist": [
@@ -229,7 +256,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "filter"
+              ]
             }
           ]
         },
@@ -252,8 +282,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/giveaway",
-              "parts": [
-                "giveaway"
+              "segments": [
+                {
+                  "lit": "giveaway"
+                }
               ],
               "select": {
                 "exist": [
@@ -263,7 +295,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "giveaway"
+              ]
             }
           ]
         }
@@ -311,8 +346,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/worth",
-              "parts": [
-                "worth"
+              "segments": [
+                {
+                  "lit": "worth"
+                }
               ],
               "select": {
                 "exist": [
@@ -323,7 +360,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "worth"
+              ]
             }
           ]
         }
@@ -339,6 +379,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

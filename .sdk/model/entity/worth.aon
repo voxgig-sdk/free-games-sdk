@@ -45,8 +45,10 @@ main: kit: entity: worth: {
           }
           method: "GET"
           orig: "/worth"
-          parts: [
-            "worth"
+          segments: [
+            {
+              lit: "worth"
+            }
           ]
           select: {
             exist: [

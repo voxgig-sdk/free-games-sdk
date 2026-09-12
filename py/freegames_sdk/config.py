@@ -1,6 +1,14 @@
 # FreeGames SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -64,6 +72,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "gamerpower_url",
             "short": "URL to the giveaway page on GamerPower",
             "type": "`$STRING`",
@@ -74,6 +83,7 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "uri",
             "name": "image",
             "short": "URL to the full-size image",
             "type": "`$STRING`",
@@ -84,11 +94,13 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "open_giveaway",
             "short": "Direct URL to claim the giveaway",
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "open_giveaway_url",
             "short": "URL to open and claim the giveaway",
             "type": "`$STRING`",
@@ -109,6 +121,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "thumbnail",
             "short": "URL to the thumbnail image",
             "type": "`$STRING`",
@@ -134,6 +147,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "giveaway",
         "op": {
           "list": {
@@ -166,8 +183,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/giveaways",
-                "parts": [
-                  "giveaways",
+                "segments": [
+                  {
+                    "lit": "giveaways",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -180,6 +199,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "giveaways",
+                ],
               },
               {
                 "args": {
@@ -201,8 +223,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/filter",
-                "parts": [
-                  "filter",
+                "segments": [
+                  {
+                    "lit": "filter",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -214,6 +238,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "filter",
+                ],
               },
             ],
           },
@@ -236,8 +263,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/giveaway",
-                "parts": [
-                  "giveaway",
+                "segments": [
+                  {
+                    "lit": "giveaway",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -248,6 +277,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "giveaway",
+                ],
               },
             ],
           },
@@ -295,8 +327,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/worth",
-                "parts": [
-                  "worth",
+                "segments": [
+                  {
+                    "lit": "worth",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -308,6 +342,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "worth",
+                ],
               },
             ],
           },

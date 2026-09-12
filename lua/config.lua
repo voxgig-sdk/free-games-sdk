@@ -43,6 +43,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "gamerpower_url",
             ["short"] = "URL to the giveaway page on GamerPower",
             ["type"] = "`$STRING`",
@@ -53,6 +54,7 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "image",
             ["short"] = "URL to the full-size image",
             ["type"] = "`$STRING`",
@@ -63,11 +65,13 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "open_giveaway",
             ["short"] = "Direct URL to claim the giveaway",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "open_giveaway_url",
             ["short"] = "URL to open and claim the giveaway",
             ["type"] = "`$STRING`",
@@ -88,6 +92,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "thumbnail",
             ["short"] = "URL to the thumbnail image",
             ["type"] = "`$STRING`",
@@ -112,6 +117,10 @@ local function make_config()
             ["short"] = "Monetary value of the giveaway",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "giveaway",
         ["op"] = {
@@ -145,8 +154,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/giveaways",
-                ["parts"] = {
-                  "giveaways",
+                ["segments"] = {
+                  {
+                    ["lit"] = "giveaways",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -158,6 +169,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "giveaways",
                 },
               },
               {
@@ -180,8 +194,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/filter",
-                ["parts"] = {
-                  "filter",
+                ["segments"] = {
+                  {
+                    ["lit"] = "filter",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -192,6 +208,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "filter",
                 },
               },
             },
@@ -215,8 +234,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/giveaway",
-                ["parts"] = {
-                  "giveaway",
+                ["segments"] = {
+                  {
+                    ["lit"] = "giveaway",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -226,6 +247,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "giveaway",
                 },
               },
             },
@@ -274,8 +298,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/worth",
-                ["parts"] = {
-                  "worth",
+                ["segments"] = {
+                  {
+                    ["lit"] = "worth",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -286,6 +312,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "worth",
                 },
               },
             },

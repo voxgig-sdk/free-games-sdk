@@ -47,6 +47,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "gamerpower_url",
 						"short": "URL to the giveaway page on GamerPower",
 						"type": "`$STRING`",
@@ -57,6 +58,7 @@ func MakeConfig() map[string]any {
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "image",
 						"short": "URL to the full-size image",
 						"type": "`$STRING`",
@@ -67,11 +69,13 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "open_giveaway",
 						"short": "Direct URL to claim the giveaway",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "open_giveaway_url",
 						"short": "URL to open and claim the giveaway",
 						"type": "`$STRING`",
@@ -92,6 +96,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "thumbnail",
 						"short": "URL to the thumbnail image",
 						"type": "`$STRING`",
@@ -116,6 +121,10 @@ func MakeConfig() map[string]any {
 						"short": "Monetary value of the giveaway",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "giveaway",
 				"op": map[string]any{
@@ -149,8 +158,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/giveaways",
-								"parts": []any{
-									"giveaways",
+								"segments": []any{
+									map[string]any{
+										"lit": "giveaways",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -162,6 +173,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"giveaways",
 								},
 							},
 							map[string]any{
@@ -184,8 +198,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/filter",
-								"parts": []any{
-									"filter",
+								"segments": []any{
+									map[string]any{
+										"lit": "filter",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -196,6 +212,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"filter",
 								},
 							},
 						},
@@ -219,8 +238,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/giveaway",
-								"parts": []any{
-									"giveaway",
+								"segments": []any{
+									map[string]any{
+										"lit": "giveaway",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -230,6 +251,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"giveaway",
 								},
 							},
 						},
@@ -278,8 +302,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/worth",
-								"parts": []any{
-									"worth",
+								"segments": []any{
+									map[string]any{
+										"lit": "worth",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -291,6 +317,9 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"worth",
+								},
 							},
 						},
 					},
@@ -301,6 +330,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

@@ -55,6 +55,7 @@ module FreeGamesConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "gamerpower_url",
               "short" => "URL to the giveaway page on GamerPower",
               "type" => "`$STRING`",
@@ -65,6 +66,7 @@ module FreeGamesConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "uri",
               "name" => "image",
               "short" => "URL to the full-size image",
               "type" => "`$STRING`",
@@ -75,11 +77,13 @@ module FreeGamesConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "open_giveaway",
               "short" => "Direct URL to claim the giveaway",
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "open_giveaway_url",
               "short" => "URL to open and claim the giveaway",
               "type" => "`$STRING`",
@@ -100,6 +104,7 @@ module FreeGamesConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "thumbnail",
               "short" => "URL to the thumbnail image",
               "type" => "`$STRING`",
@@ -125,6 +130,10 @@ module FreeGamesConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "giveaway",
           "op" => {
             "list" => {
@@ -157,8 +166,10 @@ module FreeGamesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/giveaways",
-                  "parts" => [
-                    "giveaways",
+                  "segments" => [
+                    {
+                      "lit" => "giveaways",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -171,6 +182,9 @@ module FreeGamesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "giveaways",
+                  ],
                 },
                 {
                   "args" => {
@@ -192,8 +206,10 @@ module FreeGamesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/filter",
-                  "parts" => [
-                    "filter",
+                  "segments" => [
+                    {
+                      "lit" => "filter",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -205,6 +221,9 @@ module FreeGamesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "filter",
+                  ],
                 },
               ],
             },
@@ -227,8 +246,10 @@ module FreeGamesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/giveaway",
-                  "parts" => [
-                    "giveaway",
+                  "segments" => [
+                    {
+                      "lit" => "giveaway",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -239,6 +260,9 @@ module FreeGamesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "giveaway",
+                  ],
                 },
               ],
             },
@@ -286,8 +310,10 @@ module FreeGamesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/worth",
-                  "parts" => [
-                    "worth",
+                  "segments" => [
+                    {
+                      "lit" => "worth",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -299,6 +325,9 @@ module FreeGamesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "worth",
+                  ],
                 },
               ],
             },
