@@ -105,7 +105,7 @@ local results, err = client:Giveaway():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/free-games` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-games-sdk/releases) |
+| TypeScript | `@voxgig-sdk/free-games-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-games-sdk/releases) |
 | Python | `voxgig-sdk-free-games` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-games-sdk/releases) |
 | PHP | `voxgig-sdk/free-games` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-games-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/free-games-sdk/go` | `go get github.com/voxgig-sdk/free-games-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Giveaway():list()
 ### TypeScript
 
 ```ts
-import { FreeGamesSDK } from '@voxgig-sdk/free-games'
+import { FreeGamesSDK } from '@voxgig-sdk/free-games-sdk'
 
 const client = new FreeGamesSDK()
 

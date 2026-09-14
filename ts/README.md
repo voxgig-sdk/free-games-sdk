@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { FreeGamesSDK } from '@voxgig-sdk/free-games'
+import { FreeGamesSDK } from '@voxgig-sdk/free-games-sdk'
 
 const client = new FreeGamesSDK()
 ```
@@ -491,7 +491,7 @@ free-games/
 Import the SDK from the package root:
 
 ```ts
-import { FreeGamesSDK } from '@voxgig-sdk/free-games'
+import { FreeGamesSDK } from '@voxgig-sdk/free-games-sdk'
 ```
 
 ### Entity state
