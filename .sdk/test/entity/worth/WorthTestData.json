@@ -2,17 +2,17 @@
   "existing": {
     "worth": {
       "WORTH00": {
-        "active_giveaways_number": "s14",
+        "active_giveaways_number": 20,
         "worth_estimation_usd": "s15",
         "id": "WORTH00"
       },
       "WORTH01": {
-        "active_giveaways_number": "s28",
+        "active_giveaways_number": 40,
         "worth_estimation_usd": "s29",
         "id": "WORTH01"
       },
       "WORTH02": {
-        "active_giveaways_number": "s3c",
+        "active_giveaways_number": 60,
         "worth_estimation_usd": "s3d",
         "id": "WORTH02"
       }
@@ -21,8 +21,60 @@
   "new": {
     "worth": {
       "worth_ref01": {
-        "active_giveaways_number": "s50",
+        "active_giveaways_number": 80,
         "worth_estimation_usd": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /worth": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getTotalWorth",
+        "parameters": [
+          {
+            "description": "Filter total worth by platform",
+            "in": "query",
+            "name": "platform",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter total worth by type",
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "active_giveaways_number": {
+                      "description": "Number of active giveaways",
+                      "type": "integer"
+                    },
+                    "worth_estimation_usd": {
+                      "description": "Total estimated worth in USD",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with total worth information"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

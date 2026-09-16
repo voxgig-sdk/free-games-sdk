@@ -16,7 +16,7 @@
         "thumbnail": "sab",
         "title": "sac",
         "type": "sad",
-        "users": "sae",
+        "users": 174,
         "worth": "saf"
       },
       "GIVEAWAY01": {
@@ -34,7 +34,7 @@
         "thumbnail": "s14b",
         "title": "s14c",
         "type": "s14d",
-        "users": "s14e",
+        "users": 334,
         "worth": "s14f"
       },
       "GIVEAWAY02": {
@@ -52,7 +52,7 @@
         "thumbnail": "s1eb",
         "title": "s1ec",
         "type": "s1ed",
-        "users": "s1ee",
+        "users": 494,
         "worth": "s1ef"
       }
     }
@@ -73,8 +73,429 @@
         "thumbnail": "s28b",
         "title": "s28c",
         "type": "s28d",
-        "users": "s28e",
+        "users": 654,
         "worth": "s28f"
+      }
+    }
+  },
+  "requests": {
+    "GET /giveaways": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllGiveaways",
+        "parameters": [
+          {
+            "description": "Filter giveaways by platform (e.g., pc, steam, epic-games-store, android, ios, ps4, ps5, xbox-one, xbox-series-xs, switch, vr)",
+            "in": "query",
+            "name": "platform",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter giveaways by type (e.g., game, loot, beta)",
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Sort giveaways by criteria (e.g., date, value, popularity)",
+            "in": "query",
+            "name": "sort-by",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "description": "Get this amazing game for free for a limited time!",
+                    "end_date": "2023-12-15 23:59:00",
+                    "gamerpower_url": "https://www.gamerpower.com/giveaway/1234",
+                    "id": 1234,
+                    "image": "https://www.gamerpower.com/offers/1/example-large.jpg",
+                    "instructions": "1. Click the button to visit the giveaway page. 2. Follow instructions to claim.",
+                    "open_giveaway": "https://www.example.com/giveaway",
+                    "open_giveaway_url": "https://www.gamerpower.com/open/1234",
+                    "platforms": "PC, Steam",
+                    "published_date": "2023-11-15 12:00:00",
+                    "status": "Active",
+                    "thumbnail": "https://www.gamerpower.com/offers/1/example.jpg",
+                    "title": "Free Game Giveaway",
+                    "type": "Game",
+                    "users": 5000,
+                    "worth": "$19.99"
+                  }
+                ],
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "description": {
+                        "description": "Detailed description of the giveaway",
+                        "type": "string"
+                      },
+                      "end_date": {
+                        "description": "Date and time when the giveaway ends",
+                        "type": "string"
+                      },
+                      "gamerpower_url": {
+                        "description": "URL to the giveaway page on GamerPower",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the giveaway",
+                        "type": "integer"
+                      },
+                      "image": {
+                        "description": "URL to the full-size image",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "instructions": {
+                        "description": "Instructions on how to claim the giveaway",
+                        "type": "string"
+                      },
+                      "open_giveaway": {
+                        "description": "Direct URL to claim the giveaway",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "open_giveaway_url": {
+                        "description": "URL to open and claim the giveaway",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "platforms": {
+                        "description": "Platforms on which the giveaway is available",
+                        "type": "string"
+                      },
+                      "published_date": {
+                        "description": "Date and time when the giveaway was published",
+                        "type": "string"
+                      },
+                      "status": {
+                        "description": "Current status of the giveaway",
+                        "type": "string"
+                      },
+                      "thumbnail": {
+                        "description": "URL to the thumbnail image",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "title": {
+                        "description": "Title of the giveaway",
+                        "type": "string"
+                      },
+                      "type": {
+                        "description": "Type of giveaway (e.g., Game, Loot, Beta)",
+                        "type": "string"
+                      },
+                      "users": {
+                        "description": "Number of users participating in the giveaway",
+                        "type": "integer"
+                      },
+                      "worth": {
+                        "description": "Monetary value of the giveaway",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of giveaways"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "description": "Error message",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "HTTP status code",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "No giveaways found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "description": "Error message",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "HTTP status code",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /filter": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "filterGiveaways",
+        "parameters": [
+          {
+            "description": "Platform to filter by",
+            "in": "query",
+            "name": "platform",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Type of giveaway to filter by",
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "description": {
+                        "description": "Detailed description of the giveaway",
+                        "type": "string"
+                      },
+                      "end_date": {
+                        "description": "Date and time when the giveaway ends",
+                        "type": "string"
+                      },
+                      "gamerpower_url": {
+                        "description": "URL to the giveaway page on GamerPower",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the giveaway",
+                        "type": "integer"
+                      },
+                      "image": {
+                        "description": "URL to the full-size image",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "instructions": {
+                        "description": "Instructions on how to claim the giveaway",
+                        "type": "string"
+                      },
+                      "open_giveaway": {
+                        "description": "Direct URL to claim the giveaway",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "open_giveaway_url": {
+                        "description": "URL to open and claim the giveaway",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "platforms": {
+                        "description": "Platforms on which the giveaway is available",
+                        "type": "string"
+                      },
+                      "published_date": {
+                        "description": "Date and time when the giveaway was published",
+                        "type": "string"
+                      },
+                      "status": {
+                        "description": "Current status of the giveaway",
+                        "type": "string"
+                      },
+                      "thumbnail": {
+                        "description": "URL to the thumbnail image",
+                        "format": "uri",
+                        "type": "string"
+                      },
+                      "title": {
+                        "description": "Title of the giveaway",
+                        "type": "string"
+                      },
+                      "type": {
+                        "description": "Type of giveaway (e.g., Game, Loot, Beta)",
+                        "type": "string"
+                      },
+                      "users": {
+                        "description": "Number of users participating in the giveaway",
+                        "type": "integer"
+                      },
+                      "worth": {
+                        "description": "Monetary value of the giveaway",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with filtered giveaways"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /giveaway": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getGiveawayById",
+        "parameters": [
+          {
+            "description": "The unique identifier of the giveaway",
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "description": {
+                      "description": "Detailed description of the giveaway",
+                      "type": "string"
+                    },
+                    "end_date": {
+                      "description": "Date and time when the giveaway ends",
+                      "type": "string"
+                    },
+                    "gamerpower_url": {
+                      "description": "URL to the giveaway page on GamerPower",
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Unique identifier for the giveaway",
+                      "type": "integer"
+                    },
+                    "image": {
+                      "description": "URL to the full-size image",
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "instructions": {
+                      "description": "Instructions on how to claim the giveaway",
+                      "type": "string"
+                    },
+                    "open_giveaway": {
+                      "description": "Direct URL to claim the giveaway",
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "open_giveaway_url": {
+                      "description": "URL to open and claim the giveaway",
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "platforms": {
+                      "description": "Platforms on which the giveaway is available",
+                      "type": "string"
+                    },
+                    "published_date": {
+                      "description": "Date and time when the giveaway was published",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "Current status of the giveaway",
+                      "type": "string"
+                    },
+                    "thumbnail": {
+                      "description": "URL to the thumbnail image",
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "title": {
+                      "description": "Title of the giveaway",
+                      "type": "string"
+                    },
+                    "type": {
+                      "description": "Type of giveaway (e.g., Game, Loot, Beta)",
+                      "type": "string"
+                    },
+                    "users": {
+                      "description": "Number of users participating in the giveaway",
+                      "type": "integer"
+                    },
+                    "worth": {
+                      "description": "Monetary value of the giveaway",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with giveaway details"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "description": "Error message",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "HTTP status code",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Giveaway not found"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

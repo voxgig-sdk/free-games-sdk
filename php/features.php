@@ -4,7 +4,10 @@ declare(strict_types=1);
 // FreeGames SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class FreeGamesFeatures
@@ -14,8 +17,14 @@ class FreeGamesFeatures
         switch ($name) {
             case "base":
                 return new FreeGamesBaseFeature();
+            case "ratelimit":
+                return new FreeGamesRatelimitFeature();
+            case "retry":
+                return new FreeGamesRetryFeature();
             case "test":
                 return new FreeGamesTestFeature();
+            case "timeout":
+                return new FreeGamesTimeoutFeature();
             default:
                 return new FreeGamesBaseFeature();
         }
@@ -31,7 +40,10 @@ class FreeGamesFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;
