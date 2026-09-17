@@ -105,12 +105,12 @@ local results, err = client:Giveaway():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/free-games-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-games-sdk/releases) |
-| Python | `voxgig-sdk-free-games` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-games-sdk/releases) |
-| PHP | `voxgig-sdk/free-games` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-games-sdk/releases) |
+| TypeScript | `@voxgig-sdk/free-games-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-games-sdk/tags) |
+| Python | `voxgig-sdk-free-games` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-games-sdk/tags) |
+| PHP | `voxgig-sdk/free-games` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-games-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/free-games-sdk/go` | `go get github.com/voxgig-sdk/free-games-sdk/go@latest` |
-| Ruby | `voxgig-sdk-free-games` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-games-sdk/releases) |
-| Lua | `voxgig-sdk-free-games` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-games-sdk/releases) |
+| Ruby | `voxgig-sdk-free-games` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-games-sdk/tags) |
+| Lua | `voxgig-sdk-free-games` | publish pending — [install from git tag](https://github.com/voxgig-sdk/free-games-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/free-games-sdk/go-cli` | `go install github.com/voxgig-sdk/free-games-sdk/go-cli/cmd/free-games@latest` |
 | Go MCP server | `github.com/voxgig-sdk/free-games-sdk/go-mcp` | `go get github.com/voxgig-sdk/free-games-sdk/go-mcp@latest` |
 

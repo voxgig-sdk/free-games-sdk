@@ -127,12 +127,12 @@ class Config {
 
     entity: {
       
-      giveaway: {
-      },
-
-      worth: {
-      },
-
+        giveaway: {
+        },
+  
+        worth: {
+        },
+  
     }
   }
 

@@ -1,4 +1,4 @@
 # Entity Models
 
-@"giveaway.aon"
-@"worth.aon"
+@"./giveaway.aon"
+@"./worth.aon"
