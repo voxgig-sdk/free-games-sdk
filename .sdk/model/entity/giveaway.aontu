@@ -1,0 +1,274 @@
+# Entity: giveaway
+
+main: kit: entity: giveaway: {
+
+  alias: field: {}
+
+  fields: {
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Detailed description of the giveaway"
+      t: "`$STRING`"
+    }
+    end_date: {
+      h: "End Date"
+      n: "end_date"
+      r: false
+      sh: "Date and time when the giveaway ends"
+      t: "`$STRING`"
+    }
+    gamerpower_url: {
+      fo: "uri"
+      h: "Gamerpower Url"
+      n: "gamerpower_url"
+      r: false
+      sh: "URL to the giveaway page on GamerPower"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique identifier for the giveaway"
+      t: "`$INTEGER`"
+    }
+    image: {
+      fo: "uri"
+      h: "Image"
+      n: "image"
+      r: false
+      sh: "URL to the full-size image"
+      t: "`$STRING`"
+    }
+    instructions: {
+      h: "Instructions"
+      n: "instructions"
+      r: false
+      sh: "Instructions on how to claim the giveaway"
+      t: "`$STRING`"
+    }
+    open_giveaway: {
+      fo: "uri"
+      h: "Open Giveaway"
+      n: "open_giveaway"
+      r: false
+      sh: "Direct URL to claim the giveaway"
+      t: "`$STRING`"
+    }
+    open_giveaway_url: {
+      fo: "uri"
+      h: "Open Giveaway Url"
+      n: "open_giveaway_url"
+      r: false
+      sh: "URL to open and claim the giveaway"
+      t: "`$STRING`"
+    }
+    platforms: {
+      h: "Platforms"
+      n: "platforms"
+      r: false
+      sh: "Platforms on which the giveaway is available"
+      t: "`$STRING`"
+    }
+    published_date: {
+      h: "Published Date"
+      n: "published_date"
+      r: false
+      sh: "Date and time when the giveaway was published"
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Current status of the giveaway"
+      t: "`$STRING`"
+    }
+    thumbnail: {
+      fo: "uri"
+      h: "Thumbnail"
+      n: "thumbnail"
+      r: false
+      sh: "URL to the thumbnail image"
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      sh: "Title of the giveaway"
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "Type of giveaway (e.g., Game, Loot, Beta)"
+      t: "`$STRING`"
+    }
+    users: {
+      h: "Users"
+      n: "users"
+      r: false
+      sh: "Number of users participating in the giveaway"
+      t: "`$INTEGER`"
+    }
+    worth: {
+      h: "Worth"
+      n: "worth"
+      r: false
+      sh: "Monetary value of the giveaway"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "giveaway"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /giveaways"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "platform"
+                or: "platform"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "sort_by"
+                or: "sort_by"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/giveaways"
+          q: {
+            exist: [
+              "platform"
+              "sort_by"
+              "type"
+            ]
+          }
+          s: [
+            {
+              lit: "giveaways"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /filter"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "platform"
+                or: "platform"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/filter"
+          q: {
+            exist: [
+              "platform"
+              "type"
+            ]
+          }
+          s: [
+            {
+              lit: "filter"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /giveaway"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/giveaway"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "giveaway"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

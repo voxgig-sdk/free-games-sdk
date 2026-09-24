@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -142,88 +135,104 @@ class Config {
       "fields": [
         {
           "name": "description",
-          "short": "Detailed description of the giveaway",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Detailed description of the giveaway"
         },
         {
           "name": "end_date",
-          "short": "Date and time when the giveaway ends",
-          "type": "`$STRING`"
+          "title": "End Date",
+          "type": "`$STRING`",
+          "short": "Date and time when the giveaway ends"
         },
         {
-          "format": "uri",
           "name": "gamerpower_url",
+          "title": "Gamerpower Url",
+          "type": "`$STRING`",
           "short": "URL to the giveaway page on GamerPower",
-          "type": "`$STRING`"
+          "format": "uri"
         },
         {
           "name": "id",
-          "short": "Unique identifier for the giveaway",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Unique identifier for the giveaway"
         },
         {
-          "format": "uri",
           "name": "image",
+          "title": "Image",
+          "type": "`$STRING`",
           "short": "URL to the full-size image",
-          "type": "`$STRING`"
+          "format": "uri"
         },
         {
           "name": "instructions",
-          "short": "Instructions on how to claim the giveaway",
-          "type": "`$STRING`"
+          "title": "Instructions",
+          "type": "`$STRING`",
+          "short": "Instructions on how to claim the giveaway"
         },
         {
-          "format": "uri",
           "name": "open_giveaway",
+          "title": "Open Giveaway",
+          "type": "`$STRING`",
           "short": "Direct URL to claim the giveaway",
-          "type": "`$STRING`"
+          "format": "uri"
         },
         {
-          "format": "uri",
           "name": "open_giveaway_url",
+          "title": "Open Giveaway Url",
+          "type": "`$STRING`",
           "short": "URL to open and claim the giveaway",
-          "type": "`$STRING`"
+          "format": "uri"
         },
         {
           "name": "platforms",
-          "short": "Platforms on which the giveaway is available",
-          "type": "`$STRING`"
+          "title": "Platforms",
+          "type": "`$STRING`",
+          "short": "Platforms on which the giveaway is available"
         },
         {
           "name": "published_date",
-          "short": "Date and time when the giveaway was published",
-          "type": "`$STRING`"
+          "title": "Published Date",
+          "type": "`$STRING`",
+          "short": "Date and time when the giveaway was published"
         },
         {
           "name": "status",
-          "short": "Current status of the giveaway",
-          "type": "`$STRING`"
+          "title": "Status",
+          "type": "`$STRING`",
+          "short": "Current status of the giveaway"
         },
         {
-          "format": "uri",
           "name": "thumbnail",
+          "title": "Thumbnail",
+          "type": "`$STRING`",
           "short": "URL to the thumbnail image",
-          "type": "`$STRING`"
+          "format": "uri"
         },
         {
           "name": "title",
-          "short": "Title of the giveaway",
-          "type": "`$STRING`"
+          "title": "Title",
+          "type": "`$STRING`",
+          "short": "Title of the giveaway"
         },
         {
           "name": "type",
-          "short": "Type of giveaway (e.g., Game, Loot, Beta)",
-          "type": "`$STRING`"
+          "title": "Type",
+          "type": "`$STRING`",
+          "short": "Type of giveaway (e.g., Game, Loot, Beta)"
         },
         {
           "name": "users",
-          "short": "Number of users participating in the giveaway",
-          "type": "`$INTEGER`"
+          "title": "Users",
+          "type": "`$INTEGER`",
+          "short": "Number of users participating in the giveaway"
         },
         {
           "name": "worth",
-          "short": "Monetary value of the giveaway",
-          "type": "`$STRING`"
+          "title": "Worth",
+          "type": "`$STRING`",
+          "short": "Monetary value of the giveaway"
         }
       ],
       "id": {
@@ -237,28 +246,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "platform",
-                    "orig": "platform",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "sort_by",
-                    "orig": "sort_by",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "type",
-                    "orig": "type",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/giveaways",
@@ -267,38 +254,45 @@ class Config {
                   "lit": "giveaways"
                 }
               ],
+              "parts": [
+                "giveaways"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "platform",
+                    "orig": "platform",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "sort_by",
+                    "orig": "sort_by",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "type",
+                    "orig": "type",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "platform",
                   "sort_by",
                   "type"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "giveaways"
-              ]
+              }
             },
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "platform",
-                    "orig": "platform",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "type",
-                    "orig": "type",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/filter",
@@ -307,19 +301,36 @@ class Config {
                   "lit": "filter"
                 }
               ],
+              "parts": [
+                "filter"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "platform",
+                    "orig": "platform",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "type",
+                    "orig": "type",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "platform",
                   "type"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "filter"
-              ]
+              }
             }
           ]
         },
@@ -328,17 +339,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/giveaway",
@@ -347,18 +347,30 @@ class Config {
                   "lit": "giveaway"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "giveaway"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "giveaway"
-              ]
+              "args": {
+                "query": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -371,13 +383,15 @@ class Config {
       "fields": [
         {
           "name": "active_giveaways_number",
-          "short": "Number of active giveaways",
-          "type": "`$INTEGER`"
+          "title": "Active Giveaways Number",
+          "type": "`$INTEGER`",
+          "short": "Number of active giveaways"
         },
         {
           "name": "worth_estimation_usd",
-          "short": "Total estimated worth in USD",
-          "type": "`$STRING`"
+          "title": "Worth Estimation Usd",
+          "type": "`$STRING`",
+          "short": "Total estimated worth in USD"
         }
       ],
       "name": "worth",
@@ -387,22 +401,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "platform",
-                    "orig": "platform",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "type",
-                    "orig": "type",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/worth",
@@ -411,19 +409,36 @@ class Config {
                   "lit": "worth"
                 }
               ],
+              "parts": [
+                "worth"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "platform",
+                    "orig": "platform",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "type",
+                    "orig": "type",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "platform",
                   "type"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "worth"
-              ]
+              }
             }
           ]
         }

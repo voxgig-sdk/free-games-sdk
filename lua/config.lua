@@ -88,88 +88,104 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "description",
-            ["short"] = "Detailed description of the giveaway",
+            ["title"] = "Description",
             ["type"] = "`$STRING`",
+            ["short"] = "Detailed description of the giveaway",
           },
           {
             ["name"] = "end_date",
-            ["short"] = "Date and time when the giveaway ends",
+            ["title"] = "End Date",
             ["type"] = "`$STRING`",
+            ["short"] = "Date and time when the giveaway ends",
           },
           {
-            ["format"] = "uri",
             ["name"] = "gamerpower_url",
-            ["short"] = "URL to the giveaway page on GamerPower",
+            ["title"] = "Gamerpower Url",
             ["type"] = "`$STRING`",
+            ["short"] = "URL to the giveaway page on GamerPower",
+            ["format"] = "uri",
           },
           {
             ["name"] = "id",
-            ["short"] = "Unique identifier for the giveaway",
+            ["title"] = "Id",
             ["type"] = "`$INTEGER`",
+            ["short"] = "Unique identifier for the giveaway",
           },
           {
-            ["format"] = "uri",
             ["name"] = "image",
-            ["short"] = "URL to the full-size image",
+            ["title"] = "Image",
             ["type"] = "`$STRING`",
+            ["short"] = "URL to the full-size image",
+            ["format"] = "uri",
           },
           {
             ["name"] = "instructions",
+            ["title"] = "Instructions",
+            ["type"] = "`$STRING`",
             ["short"] = "Instructions on how to claim the giveaway",
-            ["type"] = "`$STRING`",
           },
           {
-            ["format"] = "uri",
             ["name"] = "open_giveaway",
-            ["short"] = "Direct URL to claim the giveaway",
+            ["title"] = "Open Giveaway",
             ["type"] = "`$STRING`",
+            ["short"] = "Direct URL to claim the giveaway",
+            ["format"] = "uri",
           },
           {
-            ["format"] = "uri",
             ["name"] = "open_giveaway_url",
-            ["short"] = "URL to open and claim the giveaway",
+            ["title"] = "Open Giveaway Url",
             ["type"] = "`$STRING`",
+            ["short"] = "URL to open and claim the giveaway",
+            ["format"] = "uri",
           },
           {
             ["name"] = "platforms",
-            ["short"] = "Platforms on which the giveaway is available",
+            ["title"] = "Platforms",
             ["type"] = "`$STRING`",
+            ["short"] = "Platforms on which the giveaway is available",
           },
           {
             ["name"] = "published_date",
-            ["short"] = "Date and time when the giveaway was published",
+            ["title"] = "Published Date",
             ["type"] = "`$STRING`",
+            ["short"] = "Date and time when the giveaway was published",
           },
           {
             ["name"] = "status",
-            ["short"] = "Current status of the giveaway",
+            ["title"] = "Status",
             ["type"] = "`$STRING`",
+            ["short"] = "Current status of the giveaway",
           },
           {
-            ["format"] = "uri",
             ["name"] = "thumbnail",
-            ["short"] = "URL to the thumbnail image",
+            ["title"] = "Thumbnail",
             ["type"] = "`$STRING`",
+            ["short"] = "URL to the thumbnail image",
+            ["format"] = "uri",
           },
           {
             ["name"] = "title",
-            ["short"] = "Title of the giveaway",
+            ["title"] = "Title",
             ["type"] = "`$STRING`",
+            ["short"] = "Title of the giveaway",
           },
           {
             ["name"] = "type",
-            ["short"] = "Type of giveaway (e.g., Game, Loot, Beta)",
+            ["title"] = "Type",
             ["type"] = "`$STRING`",
+            ["short"] = "Type of giveaway (e.g., Game, Loot, Beta)",
           },
           {
             ["name"] = "users",
-            ["short"] = "Number of users participating in the giveaway",
+            ["title"] = "Users",
             ["type"] = "`$INTEGER`",
+            ["short"] = "Number of users participating in the giveaway",
           },
           {
             ["name"] = "worth",
-            ["short"] = "Monetary value of the giveaway",
+            ["title"] = "Worth",
             ["type"] = "`$STRING`",
+            ["short"] = "Monetary value of the giveaway",
           },
         },
         ["id"] = {
@@ -183,34 +199,42 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "platform",
-                      ["orig"] = "platform",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "sort_by",
-                      ["orig"] = "sort_by",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "type",
-                      ["orig"] = "type",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/giveaways",
                 ["segments"] = {
                   {
                     ["lit"] = "giveaways",
+                  },
+                },
+                ["parts"] = {
+                  "giveaways",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "platform",
+                      ["orig"] = "platform",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "sort_by",
+                      ["orig"] = "sort_by",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "type",
+                      ["orig"] = "type",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
                   },
                 },
                 ["select"] = {
@@ -220,31 +244,8 @@ local function make_config()
                     "type",
                   },
                 },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "giveaways",
-                },
               },
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "platform",
-                      ["orig"] = "platform",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "type",
-                      ["orig"] = "type",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/filter",
@@ -253,18 +254,35 @@ local function make_config()
                     ["lit"] = "filter",
                   },
                 },
+                ["parts"] = {
+                  "filter",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "platform",
+                      ["orig"] = "platform",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "type",
+                      ["orig"] = "type",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "platform",
                     "type",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "filter",
                 },
               },
             },
@@ -274,17 +292,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "id",
-                      ["orig"] = "id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/giveaway",
@@ -293,17 +300,29 @@ local function make_config()
                     ["lit"] = "giveaway",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "id",
-                  },
+                ["parts"] = {
+                  "giveaway",
                 },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "giveaway",
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["reqd"] = true,
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "id",
+                  },
                 },
               },
             },
@@ -317,13 +336,15 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "active_giveaways_number",
-            ["short"] = "Number of active giveaways",
+            ["title"] = "Active Giveaways Number",
             ["type"] = "`$INTEGER`",
+            ["short"] = "Number of active giveaways",
           },
           {
             ["name"] = "worth_estimation_usd",
-            ["short"] = "Total estimated worth in USD",
+            ["title"] = "Worth Estimation Usd",
             ["type"] = "`$STRING`",
+            ["short"] = "Total estimated worth in USD",
           },
         },
         ["name"] = "worth",
@@ -333,22 +354,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "platform",
-                      ["orig"] = "platform",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "type",
-                      ["orig"] = "type",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/worth",
@@ -357,18 +362,35 @@ local function make_config()
                     ["lit"] = "worth",
                   },
                 },
+                ["parts"] = {
+                  "worth",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "platform",
+                      ["orig"] = "platform",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "type",
+                      ["orig"] = "type",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "platform",
                     "type",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "worth",
                 },
               },
             },

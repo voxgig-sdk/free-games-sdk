@@ -1,7 +1,7 @@
 // Typed models for the FreeGames SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,22 +14,6 @@ import (
 
 // Giveaway is the typed data model for the giveaway entity.
 type Giveaway struct {
-	Description *string `json:"description,omitempty"`
-	EndDate *string `json:"end_date,omitempty"`
-	GamerpowerUrl *string `json:"gamerpower_url,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Instructions *string `json:"instructions,omitempty"`
-	OpenGiveaway *string `json:"open_giveaway,omitempty"`
-	OpenGiveawayUrl *string `json:"open_giveaway_url,omitempty"`
-	Platforms *string `json:"platforms,omitempty"`
-	PublishedDate *string `json:"published_date,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Thumbnail *string `json:"thumbnail,omitempty"`
-	Title *string `json:"title,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Users *int `json:"users,omitempty"`
-	Worth *string `json:"worth,omitempty"`
 }
 
 // GiveawayLoadMatch is the typed request payload for Giveaway.LoadTyped.
@@ -46,8 +30,6 @@ type GiveawayListMatch struct {
 
 // Worth is the typed data model for the worth entity.
 type Worth struct {
-	ActiveGiveawaysNumber *int `json:"active_giveaways_number,omitempty"`
-	WorthEstimationUsd *string `json:"worth_estimation_usd,omitempty"`
 }
 
 // WorthLoadMatch is the typed request payload for Worth.LoadTyped.
