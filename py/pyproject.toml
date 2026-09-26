@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "voxgig-sdk-free-games"
+name = "voxgig-sdk-free-games-sdk"
 version = "0.0.1"
 description = "Unofficial generated Python SDK for the Free Games public API. Not affiliated with or endorsed by the upstream API provider."
 readme = "README.md"
